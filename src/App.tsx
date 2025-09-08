@@ -200,7 +200,7 @@ function App() {
 
       {renderContent()}
 
-      <Footer />
+      <Footer onNavigate={handleNavigation} />
     </div>
   );
 }

@@ -1,55 +1,16 @@
 import React from "react";
 
-const Categories: React.FC = () => {
+interface CategoriesProps {
+  onNavigate?: (page: string) => void;
+}
+
+const Categories: React.FC<CategoriesProps> = ({ onNavigate }) => {
   const categories = [
-    {
-      name: "Web Development",
-      description:
-        "Frontend and backend development tutorials, frameworks, and best practices",
-      count: 25,
-      icon: (
-        <svg
-          className="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-          />
-        </svg>
-      ),
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      name: "JavaScript",
-      description: "Modern JavaScript, ES6+, frameworks, and advanced concepts",
-      count: 18,
-      icon: (
-        <svg
-          className="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-          />
-        </svg>
-      ),
-      color: "from-yellow-400 to-orange-500",
-    },
     {
       name: "React",
       description:
-        "React components, hooks, state management, and performance optimization",
-      count: 22,
+        "Modern React development with hooks, components, and best practices for building dynamic user interfaces.",
+      count: 8,
       icon: (
         <svg
           className="w-8 h-8"
@@ -70,14 +31,14 @@ const Categories: React.FC = () => {
     {
       name: "TypeScript",
       description:
-        "Type safety, interfaces, generics, and advanced TypeScript patterns",
-      count: 15,
+        "Type-safe JavaScript development with advanced TypeScript features, interfaces, and generics.",
+      count: 6,
       icon: (
         <svg
           className="w-8 h-8"
           fill="none"
           stroke="currentColor"
-          viewBox="0 0 24 24"
+          viewBox="0 24 24"
         >
           <path
             strokeLinecap="round"
@@ -90,9 +51,10 @@ const Categories: React.FC = () => {
       color: "from-indigo-500 to-purple-600",
     },
     {
-      name: "CSS & Design",
-      description: "Styling, layouts, animations, and modern design techniques",
-      count: 20,
+      name: "CSS",
+      description:
+        "Modern CSS techniques, layouts, animations, and styling best practices for beautiful web design.",
+      count: 5,
       icon: (
         <svg
           className="w-8 h-8"
@@ -111,9 +73,10 @@ const Categories: React.FC = () => {
       color: "from-pink-500 to-rose-500",
     },
     {
-      name: "Backend",
-      description: "Server-side development, databases, APIs, and deployment",
-      count: 12,
+      name: "JavaScript",
+      description:
+        "Core JavaScript concepts, ES6+ features, and modern development patterns for web applications.",
+      count: 7,
       icon: (
         <svg
           className="w-8 h-8"
@@ -125,17 +88,39 @@ const Categories: React.FC = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"
+            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
           />
         </svg>
       ),
-      color: "from-green-500 to-emerald-600",
+      color: "from-yellow-400 to-orange-500",
+    },
+    {
+      name: "Frontend",
+      description:
+        "Frontend development techniques, user interface design, and creating engaging user experiences.",
+      count: 9,
+      icon: (
+        <svg
+          className="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+          />
+        </svg>
+      ),
+      color: "from-blue-500 to-cyan-500",
     },
     {
       name: "Performance",
       description:
-        "Optimization techniques, monitoring, and best practices for speed",
-      count: 8,
+        "Web performance optimization, loading strategies, and techniques for faster applications.",
+      count: 4,
       icon: (
         <svg
           className="w-8 h-8"
@@ -153,39 +138,10 @@ const Categories: React.FC = () => {
       ),
       color: "from-purple-500 to-indigo-600",
     },
-    {
-      name: "Tools & DevOps",
-      description:
-        "Development tools, CI/CD, containerization, and workflow optimization",
-      count: 10,
-      icon: (
-        <svg
-          className="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-          />
-        </svg>
-      ),
-      color: "from-gray-600 to-gray-800",
-    },
   ];
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
           Browse by Category
@@ -197,7 +153,6 @@ const Categories: React.FC = () => {
         </p>
       </div>
 
-      {/* Categories Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
         {categories.map((category, index) => (
           <div
@@ -237,48 +192,17 @@ const Categories: React.FC = () => {
         ))}
       </div>
 
-      {/* Popular Topics */}
-      <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-          Most Popular Topics
-        </h2>
-        <div className="flex flex-wrap justify-center gap-3">
-          {[
-            "React Hooks",
-            "TypeScript Generics",
-            "CSS Grid",
-            "Node.js APIs",
-            "Performance Optimization",
-            "Responsive Design",
-            "State Management",
-            "Testing Strategies",
-            "Docker Containers",
-            "GraphQL",
-            "Next.js",
-            "Tailwind CSS",
-          ].map((topic, index) => (
-            <span
-              key={index}
-              className="px-4 py-2 bg-white text-gray-700 rounded-full border border-gray-200 hover:border-blue-300 hover:text-blue-700 cursor-pointer transition-all duration-200 text-sm font-medium shadow-sm hover:shadow-md"
-            >
-              {topic}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Stats Section */}
-      <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         <div className="text-center p-6 bg-white rounded-xl shadow-sm border border-gray-200">
-          <div className="text-3xl font-bold text-blue-600 mb-2">110+</div>
+          <div className="text-3xl font-bold text-blue-600 mb-2">39+</div>
           <div className="text-gray-600 text-sm">Total Articles</div>
         </div>
         <div className="text-center p-6 bg-white rounded-xl shadow-sm border border-gray-200">
-          <div className="text-3xl font-bold text-green-600 mb-2">8</div>
+          <div className="text-3xl font-bold text-green-600 mb-2">6</div>
           <div className="text-gray-600 text-sm">Categories</div>
         </div>
         <div className="text-center p-6 bg-white rounded-xl shadow-sm border border-gray-200">
-          <div className="text-3xl font-bold text-purple-600 mb-2">50+</div>
+          <div className="text-3xl font-bold text-purple-600 mb-2">20+</div>
           <div className="text-gray-600 text-sm">Topics Covered</div>
         </div>
         <div className="text-center p-6 bg-white rounded-xl shadow-sm border border-gray-200">

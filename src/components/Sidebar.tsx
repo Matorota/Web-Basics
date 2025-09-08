@@ -94,42 +94,6 @@ const Sidebar: React.FC<SidebarProps> = ({ theme, onThemeChange }) => {
         </div>
       </div>
 
-      {/* Recent Activity */}
-      <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl border border-blue-200 p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-          <svg
-            className="w-5 h-5 text-blue-600 mr-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M13 10V3L4 14h7v7l9-11h-7z"
-            />
-          </svg>
-          Recent Activity
-        </h3>
-        <div className="space-y-3">
-          <div className="flex items-center text-sm">
-            <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
-            <span className="text-gray-600">
-              10 new posts published this month
-            </span>
-          </div>
-          <div className="flex items-center text-sm">
-            <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
-            <span className="text-gray-600">Updated site design</span>
-          </div>
-          <div className="flex items-center text-sm">
-            <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-            <span className="text-gray-600">Added search functionality</span>
-          </div>
-        </div>
-      </div>
-
       {/* Tags Cloud */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">
