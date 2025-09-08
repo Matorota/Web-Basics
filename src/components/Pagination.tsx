@@ -49,44 +49,71 @@ const Pagination: React.FC<PaginationProps> = ({
   if (totalPages <= 1) return null;
 
   return (
-    <nav
-      className="pagination-nav flex justify-center mt-12"
-      aria-label="Pagination"
-    >
-      <div className="flex items-center space-x-2">
+    <nav className="flex justify-center mt-16" aria-label="Pagination">
+      <div className="flex items-center bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="pagination-button px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="px-4 py-3 text-sm font-medium text-gray-600 hover:bg-blue-50 hover:text-blue-600 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-gray-600 transition-all duration-200 flex items-center gap-2"
         >
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
           Previous
         </button>
 
-        {getPageNumbers().map((page, index) => (
-          <React.Fragment key={index}>
-            {page === "..." ? (
-              <span className="px-3 py-2 text-sm text-gray-500">...</span>
-            ) : (
-              <button
-                onClick={() => onPageChange(page as number)}
-                className={`pagination-number px-4 py-2 text-sm font-medium transition-colors ${
-                  currentPage === page
-                    ? "text-white bg-blue-600 border border-blue-600 hover:bg-blue-700"
-                    : "text-gray-700 bg-white border border-gray-300 hover:bg-gray-50"
-                }`}
-              >
-                {page}
-              </button>
-            )}
-          </React.Fragment>
-        ))}
+        <div className="flex border-l border-r border-gray-200">
+          {getPageNumbers().map((page, index) => (
+            <React.Fragment key={index}>
+              {page === "..." ? (
+                <span className="px-4 py-3 text-sm text-gray-400 select-none">
+                  ...
+                </span>
+              ) : (
+                <button
+                  onClick={() => onPageChange(page as number)}
+                  className={`px-4 py-3 text-sm font-medium transition-all duration-200 min-w-[44px] ${
+                    currentPage === page
+                      ? "text-white bg-blue-600 shadow-md"
+                      : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                  }`}
+                >
+                  {page}
+                </button>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
 
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="pagination-button px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="px-4 py-3 text-sm font-medium text-gray-600 hover:bg-blue-50 hover:text-blue-600 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-gray-600 transition-all duration-200 flex items-center gap-2"
         >
           Next
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
         </button>
       </div>
     </nav>

@@ -12,9 +12,6 @@ article > div {
   padding: 0.5rem;
 }
 
-/* Skirtumas: article p - pasirenka VISUS p elementus article viduje (bet kuriame gylyje)
-   article > div - pasirenka TIK TIESIOGINIUS article vaikus div elementus */
-
 /* 2. CLASS SELECTORS (Klasės selektoriai) */
 .blog-post {
   background: white;
@@ -77,13 +74,6 @@ article > div {
   line-height: inherit; /* Explicitly inherit line-height */
 }
 
-/* Šis h1 paveldės font-family iš tėvinio, bet turės savo color */
-.blog-container h1 {
-  color: #111827; /* Override inherited color */
-  font-weight: 700;
-  margin-bottom: inherit; /* Inherit margin-bottom from parent */
-}
-
 /* 5. CASCADE EXAMPLES (!important pavyzdžiai) */
 .pagination-button {
   background-color: #f9fafb;
@@ -105,183 +95,21 @@ article > div {
   border-color: #3b82f6 !important; /* !important nustelbia default border-color */
 }
 
-/* 6. RESPONSIVE DESIGN (Mobile-first approach) */
-/* Mobile styles (base) */
-.blog-layout {
-  padding: 1rem;
-  max-width: 100%;
+/* Theme customizations */
+.theme-blue {
+  --primary-color: #3b82f6;
+  --primary-hover: #2563eb;
+  --primary-light: #dbeafe;
 }
 
-.blog-grid {
-  display: block;
+.theme-green {
+  --primary-color: #10b981;
+  --primary-hover: #059669;
+  --primary-light: #d1fae5;
 }
 
-.sidebar {
-  margin-top: 2rem;
-  order: 2;
+.theme-purple {
+  --primary-color: #8b5cf6;
+  --primary-hover: #7c3aed;
+  --primary-light: #ede9fe;
 }
-
-.main-content {
-  order: 1;
-}
-
-/* Tablet styles */
-@media (min-width: 768px) {
-  .blog-layout {
-    padding: 2rem;
-    max-width: 768px;
-    margin: 0 auto;
-  }
-
-  .search-container {
-    max-width: 400px;
-  }
-
-  .pagination-nav {
-    justify-content: center;
-  }
-}
-
-/* Desktop styles */
-@media (min-width: 1024px) {
-  .blog-layout {
-    max-width: 1200px;
-    padding: 2rem 3rem;
-  }
-
-  .blog-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 3rem;
-  }
-
-  .sidebar {
-    margin-top: 0;
-    order: 2;
-  }
-
-  .main-content {
-    order: 1;
-  }
-
-  .search-container {
-    max-width: 500px;
-  }
-}
-
-/* 7. ADVANCED SELECTORS */
-/* Attribute selector */
-input[type="search"] {
-  -webkit-appearance: none;
-  appearance: none;
-  border-radius: 8px;
-}
-
-/* Pseudo-class selectors */
-.blog-post:nth-child(odd) {
-  border-left: 3px solid #e5e7eb;
-}
-
-.blog-post:nth-child(even) {
-  border-left: 3px solid #3b82f6;
-}
-
-/* First child selector */
-.blog-post:first-child {
-  margin-top: 0 !important; /* !important override any other margin-top rules */
-}
-
-/* Last child selector */
-.blog-post:last-child {
-  margin-bottom: 2rem !important; /* !important ensures this margin is applied */
-}
-
-/* 8. PSEUDO-ELEMENTS */
-.blog-post::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #3b82f6, #10b981);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.blog-post:hover::before {
-  opacity: 1;
-}
-
-/* 9. COMBINED SELECTORS */
-.blog-container .search-container input:focus + .search-icon {
-  color: #3b82f6 !important; /* !important ensures this color overrides others */
-}
-
-/* Adjacent sibling selector */
-.search-input + button {
-  background: transparent;
-  border: none;
-  padding: 8px;
-}
-
-/* General sibling selector */
-.search-container ~ .blog-post {
-  animation: fadeIn 0.5s ease-in;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 10. SPECIFICITY EXAMPLES */
-/* Low specificity */
-div {
-  margin: 1rem;
-}
-
-/* Medium specificity */
-.blog-container div {
-  margin: 1.5rem;
-}
-
-/* High specificity */
-#main-content .blog-container div {
-  margin: 2rem;
-}
-
-/* Highest specificity with !important */
-.blog-post {
-  margin: 0.5rem !important; /* This will override all above rules */
-}
-
-/*
-PAAIŠKINIMAI:
-
-1. DESCENDANT SELECTORS (Įpėdinio palikuonys):
-   - "article p" - pasirenka VISUS p elementus, esančius article viduje (bet kuriame gylyje)
-   - "article > div" - pasirenka TIK TIESIOGINIUS article vaikus div elementus
-   
-2. CLASS SELECTORS:
-   - Prasideda tašku (.) ir leidžia stilizuoti elementus pagal jų class atributą
-   - Galima naudoti kelis class'es vienai HTML elementui
-   
-3. ID SELECTORS:
-   - Prasideda grotažyme (#) ir pasirenka elementą pagal jo id atributą
-   - ID turi būti unikalus puslapyje
-   
-4. INHERITANCE (inherit):
-   - Leidžia elementui paveldėti tėvinio elemento savybes
-   - Jei ištrinsime "inherit", elementas naudos default reikšmes
-   
-5. CASCADE (!important):
-   - !important nustelbia kitas CSS taisykles, nepriklausomai nuo specificity
-   - Jei ištrinsime "!important", gali būti pritaikytos kitos taisyklės
-*/

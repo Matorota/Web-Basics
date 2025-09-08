@@ -10,7 +10,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <div className="search-container mb-8">
       <div className="relative max-w-md mx-auto lg:mx-0">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
           <svg
             className="h-5 w-5 text-gray-400"
             fill="none"
@@ -31,14 +31,14 @@ const SearchBar: React.FC<SearchBarProps> = ({
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
           placeholder="Search posts, tags, or authors..."
-          className="search-input block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white shadow-sm"
+          className="search-input block w-full pl-12 pr-12 py-4 bg-white border-2 border-gray-200 rounded-xl text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm transition-all duration-200 hover:border-gray-300"
         />
         {searchQuery && (
           <button
             onClick={() => onSearchChange("")}
-            className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+            className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 transition-colors duration-200"
           >
-            <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fillRule="evenodd"
                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -49,10 +49,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
         )}
       </div>
       {searchQuery && (
-        <p className="text-sm text-gray-600 mt-2 text-center lg:text-left">
-          Showing results for "
-          <span className="font-medium">{searchQuery}</span>"
-        </p>
+        <div className="mt-3 text-center lg:text-left">
+          <p className="text-sm text-gray-600">
+            Showing results for "
+            <span className="font-semibold text-gray-900">{searchQuery}</span>"
+          </p>
+        </div>
       )}
     </div>
   );
