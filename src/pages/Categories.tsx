@@ -4,7 +4,7 @@ interface CategoriesProps {
   onNavigate?: (page: string) => void;
 }
 
-const Categories: React.FC<CategoriesProps> = ({ onNavigate }) => {
+const Categories: React.FC<CategoriesProps> = ({}) => {
   const categories = [
     {
       name: "React",
