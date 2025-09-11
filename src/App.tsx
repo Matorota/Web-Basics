@@ -21,13 +21,11 @@ function App() {
   const [theme, setTheme] = useState("blue");
   const postsPerPage = 3;
 
-  // Get all unique categories
   const categories = [
     "all",
     ...new Set(SAMPLE_BLOG_POSTS.flatMap((post) => post.tags)),
   ];
 
-  // Filter posts based on search query and category
   const filteredPosts = useMemo(() => {
     return SAMPLE_BLOG_POSTS.filter((post) => {
       const matchesSearch =
@@ -45,7 +43,6 @@ function App() {
     });
   }, [searchQuery, selectedCategory]);
 
-  // Calculate pagination
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
   const startIndex = (currentPageNum - 1) * postsPerPage;
   const currentPosts = filteredPosts.slice(
@@ -53,7 +50,6 @@ function App() {
     startIndex + postsPerPage
   );
 
-  // Reset to first page when search/filter changes
   const handleSearchChange = (query: string) => {
     setSearchQuery(query);
     setCurrentPageNum(1);
@@ -74,7 +70,6 @@ function App() {
     setSelectedPostId(null);
   };
 
-  // Theme classes
   const themeClasses = {
     blue: "theme-blue",
     green: "theme-green",
@@ -107,7 +102,6 @@ function App() {
             className="blog-layout max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
           >
             <div className="blog-grid grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Main Content */}
               <div className="main-content lg:col-span-2">
                 <div className="mb-8">
                   <h1 className="text-3xl font-bold text-gray-900 mb-2">

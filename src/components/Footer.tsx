@@ -19,9 +19,8 @@ const Footer: React.FC<{ onNavigate?: (page: string) => void }> = ({
               CSS. Share your thoughts and ideas with the world.
             </p>
             <div className="flex space-x-4">
-              {/* Twitter */}
               <a
-                href="https://twitter.com/myblog"
+                href=""
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
@@ -36,9 +35,8 @@ const Footer: React.FC<{ onNavigate?: (page: string) => void }> = ({
                 </svg>
               </a>
 
-              {/* LinkedIn */}
               <a
-                href="https://linkedin.com/company/myblog"
+                href=""
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-blue-600 transition-colors duration-200"
@@ -53,9 +51,8 @@ const Footer: React.FC<{ onNavigate?: (page: string) => void }> = ({
                 </svg>
               </a>
 
-              {/* GitHub */}
               <a
-                href="https://github.com/myblog"
+                href=""
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-gray-900 transition-colors duration-200"
@@ -70,9 +67,8 @@ const Footer: React.FC<{ onNavigate?: (page: string) => void }> = ({
                 </svg>
               </a>
 
-              {/* Facebook */}
               <a
-                href="https://facebook.com/myblog"
+                href=""
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-blue-600 transition-colors duration-200"
@@ -87,7 +83,6 @@ const Footer: React.FC<{ onNavigate?: (page: string) => void }> = ({
                 </svg>
               </a>
 
-              {/* Instagram */}
               <a
                 href="https://instagram.com/myblog"
                 target="_blank"

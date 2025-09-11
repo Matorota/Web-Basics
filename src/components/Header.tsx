@@ -22,7 +22,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
     <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <button
@@ -34,7 +33,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             <button
               onClick={(e) => handleNavClick("home", e)}
@@ -102,7 +100,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
             </button>
           </nav>
 
-          {/* Mobile menu button */}
           <button
             onClick={toggleMobileMenu}
             className="md:hidden p-2 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-gray-100 transition-colors duration-200"
@@ -132,7 +129,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-gray-200 bg-white">
             <div className="px-2 pt-2 pb-3 space-y-1">

@@ -4,11 +4,11 @@ Modern blog site built with React, TypeScript, and Tailwind CSS featuring search
 
 ## Features
 
-- ✅ **Search functionality** - Search through blog posts by title, content, tags, or author
-- ✅ **Pagination** - Navigate through blog posts with dynamic page numbers
-- ✅ **Responsive design** - Works perfectly on desktop, tablet, and mobile devices
-- ✅ **Clean white design** - Modern, minimalist aesthetic
-- ✅ **Component-based architecture** - Reusable React components
+- Search functionality
+- Pagination
+- Responsive design
+- Clean white design
+- Component-based architecture
 
 ## Components Structure
 
@@ -19,16 +19,18 @@ Modern blog site built with React, TypeScript, and Tailwind CSS featuring search
 - `BlogPost.tsx` - Individual blog post component
 - `SearchBar.tsx` - Search input with real-time filtering
 - `Pagination.tsx` - Dynamic pagination with page numbers
-- `Sidebar.tsx` - Popular posts, categories, and newsletter signup
+- `Sidebar.tsx` - Theme switcher and tags
 - `Footer.tsx` - Site footer with links and information
 
 ### CSS Architecture
 
-The project includes comprehensive CSS examples demonstrating:
+The project includes CSS examples demonstrating:
 
-#### 1. CSS Selectors
+#### CSS Selectors
 
 - **Descendant selectors** (`article p`) - Selects ALL `<p>` elements inside `<article>` at any level
+- **Child selectors** (`article > div`) - Selects ONLY DIRECT children `<div>` elements of `<article>`
+- **Class selectors** (`.blog-post`) - Selects elements by class attribute
 - **Child selectors** (`article > div`) - Selects ONLY DIRECT children `<div>` elements of `<article>`
 - **Class selectors** (`.blog-post`) - Selects elements by class attribute
 - **ID selectors** (`#main-header`) - Selects elements by unique ID attribute

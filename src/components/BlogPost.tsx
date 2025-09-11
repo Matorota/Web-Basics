@@ -20,11 +20,6 @@ const BlogPost: React.FC<BlogPostProps> = ({
       <div className="p-8">
         <div className="flex items-center text-sm text-gray-500 mb-4">
           <div className="flex items-center">
-            <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-2">
-              <span className="text-white text-xs font-semibold">
-                {author.charAt(0)}
-              </span>
-            </div>
             <span className="font-medium">{author}</span>
           </div>
           <span className="mx-3 text-gray-300">•</span>
@@ -59,16 +54,16 @@ const BlogPost: React.FC<BlogPostProps> = ({
             {tags.map((tag, index) => (
               <span
                 key={index}
-                className="px-3 py-1 bg-gradient-to-r from-gray-50 to-gray-100 text-gray-700 text-sm rounded-full hover:from-blue-50 hover:to-blue-100 hover:text-blue-700 cursor-pointer transition-all duration-200 border border-gray-200 hover:border-blue-200"
+                className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full border border-gray-200 hover:bg-blue-100 hover:text-blue-700 cursor-pointer transition-colors duration-200"
               >
                 {tag}
               </span>
             ))}
           </div>
-          <button className="text-blue-600 hover:text-blue-800 font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all duration-200">
+          <button className="px-4 py-2 text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors duration-200 flex items-center gap-1">
             Read More
             <svg
-              className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
+              className="w-4 h-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

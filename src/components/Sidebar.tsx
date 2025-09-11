@@ -20,7 +20,6 @@ const Sidebar: React.FC<SidebarProps> = ({ theme, onThemeChange }) => {
 
   return (
     <aside className="space-y-8">
-      {/* About Section */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">
           About This Blog
@@ -31,9 +30,6 @@ const Sidebar: React.FC<SidebarProps> = ({ theme, onThemeChange }) => {
           community of developers and designers.
         </p>
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-            <span className="text-white font-semibold text-sm">MB</span>
-          </div>
           <div>
             <p className="text-sm font-medium text-gray-900">MyBlog Team</p>
             <p className="text-xs text-gray-500">Content Creators</p>
@@ -41,7 +37,6 @@ const Sidebar: React.FC<SidebarProps> = ({ theme, onThemeChange }) => {
         </div>
       </div>
 
-      {/* Theme Switcher */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
           <svg
@@ -94,7 +89,6 @@ const Sidebar: React.FC<SidebarProps> = ({ theme, onThemeChange }) => {
         </div>
       </div>
 
-      {/* Tags Cloud */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">
           Popular Tags
@@ -105,10 +99,8 @@ const Sidebar: React.FC<SidebarProps> = ({ theme, onThemeChange }) => {
             "TypeScript",
             "CSS",
             "JavaScript",
-            "Node.js",
-            "Design",
             "Frontend",
-            "Backend",
+            "Performance",
           ].map((tag) => (
             <span
               key={tag}
