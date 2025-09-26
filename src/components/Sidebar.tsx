@@ -13,12 +13,12 @@ const Sidebar: React.FC<SidebarProps> = ({
     {
       name: "black",
       label: "Dark Mode",
-      color: "from-gray-900 to-black",
+      color: "from-gray-800 to-black",
     },
     {
       name: "white",
       label: "Bright White",
-      color: "from-blue-500 to-cyan-500",
+      color: "from-gray-300 to-white",
     },
   ];
 
@@ -62,9 +62,6 @@ const Sidebar: React.FC<SidebarProps> = ({
               <span className="text-sm font-medium text-gray-700">
                 {themeOption.label}
               </span>
-              {theme === themeOption.name && (
-                <span className="text-blue-600 ml-auto font-bold">✓</span>
-              )}
             </button>
           ))}
         </div>
