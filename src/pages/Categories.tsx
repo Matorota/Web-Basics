@@ -4,7 +4,18 @@ interface CategoriesProps {
   onNavigate?: (page: string) => void;
 }
 
-const Categories: React.FC<CategoriesProps> = ({}) => {
+const Categories: React.FC<CategoriesProps> = ({ onNavigate }) => {
+  const handleCategoryClick = (categoryName: string) => {
+    if (onNavigate) {
+      onNavigate("home");
+      setTimeout(() => {
+        const filterEvent = new CustomEvent("filterByCategory", {
+          detail: categoryName,
+        });
+        window.dispatchEvent(filterEvent);
+      }, 100);
+    }
+  };
   const categories = [
     {
       name: "React",
@@ -61,6 +72,7 @@ const Categories: React.FC<CategoriesProps> = ({}) => {
         {categories.map((category, index) => (
           <div
             key={index}
+            onClick={() => handleCategoryClick(category.name)}
             className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-lg transition-all duration-200 cursor-pointer group"
           >
             <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">

@@ -98,6 +98,40 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                 }`}
               ></span>
             </button>
+            <button
+              onClick={(e) => handleNavClick("archive", e)}
+              className={`transition-colors duration-200 font-medium relative group ${
+                currentPage === "archive"
+                  ? "text-blue-600"
+                  : "text-gray-600 hover:text-blue-600"
+              }`}
+            >
+              Archive
+              <span
+                className={`absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-200 ${
+                  currentPage === "archive"
+                    ? "w-full"
+                    : "w-0 group-hover:w-full"
+                }`}
+              ></span>
+            </button>
+            <button
+              onClick={(e) => handleNavClick("privacy", e)}
+              className={`transition-colors duration-200 font-medium relative group ${
+                currentPage === "privacy"
+                  ? "text-blue-600"
+                  : "text-gray-600 hover:text-blue-600"
+              }`}
+            >
+              Privacy Policy
+              <span
+                className={`absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-200 ${
+                  currentPage === "privacy"
+                    ? "w-full"
+                    : "w-0 group-hover:w-full"
+                }`}
+              ></span>
+            </button>
           </nav>
 
           <button
@@ -171,6 +205,36 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                 }`}
               >
                 Contact
+              </button>
+              <button
+                onClick={(e) => handleNavClick("archive", e)}
+                className={`block w-full text-left px-3 py-2 rounded-md transition-colors duration-200 font-medium ${
+                  currentPage === "archive"
+                    ? "text-blue-600 bg-blue-50"
+                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
+                }`}
+              >
+                Archive
+              </button>
+              <button
+                onClick={(e) => handleNavClick("privacy", e)}
+                className={`block w-full text-left px-3 py-2 rounded-md transition-colors duration-200 font-medium ${
+                  currentPage === "privacy"
+                    ? "text-blue-600 bg-blue-50"
+                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
+                }`}
+              >
+                Privacy Policy
+              </button>
+              <button
+                onClick={(e) => handleNavClick("terms", e)}
+                className={`block w-full text-left px-3 py-2 rounded-md transition-colors duration-200 font-medium ${
+                  currentPage === "terms"
+                    ? "text-blue-600 bg-blue-50"
+                    : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
+                }`}
+              >
+                Terms of Service
               </button>
             </div>
           </div>

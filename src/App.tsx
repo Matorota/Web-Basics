@@ -1,3 +1,4 @@
+import React from "react";
 import Header from "./components/Header";
 import BlogPost from "./components/BlogPost";
 import Sidebar from "./components/Sidebar";
@@ -9,8 +10,11 @@ import About from "./pages/About";
 import Categories from "./pages/Categories";
 import Contact from "./pages/Contact";
 import BlogPostDetail from "./pages/BlogPostDetail";
+import Archive from "./pages/Archive";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import { SAMPLE_BLOG_POSTS } from "./constants";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -18,7 +22,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [currentPageNum, setCurrentPageNum] = useState(1);
-  const [theme, setTheme] = useState("blue");
+  const [theme, setTheme] = useState("white");
   const postsPerPage = 3;
 
   const categories = [
@@ -60,6 +64,12 @@ function App() {
     setCurrentPageNum(1);
   };
 
+  const handleTagClick = (tag: string) => {
+    setSelectedCategory(tag);
+    setCurrentPageNum(1);
+    setCurrentPage("home");
+  };
+
   const handlePostClick = (postId: number) => {
     setSelectedPostId(postId);
     setCurrentPage("blog-detail");
@@ -70,20 +80,47 @@ function App() {
     setSelectedPostId(null);
   };
 
+  React.useEffect(() => {
+    const handleCategoryFilter = (event: any) => {
+      setSelectedCategory(event.detail);
+      setCurrentPageNum(1);
+    };
+
+    window.addEventListener("filterByCategory", handleCategoryFilter);
+
+    return () => {
+      window.removeEventListener("filterByCategory", handleCategoryFilter);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.body.className = `theme-${theme}`;
+  }, [theme]);
+
   const themeClasses = {
-    blue: "theme-blue",
-    green: "theme-green",
-    purple: "theme-purple",
+    black: "theme-black",
+    white: "theme-white",
   };
 
   const renderContent = () => {
     switch (currentPage) {
       case "about":
-        return <About />;
+        return <About onNavigate={handleNavigation} />;
       case "categories":
-        return <Categories />;
+        return <Categories onNavigate={handleNavigation} />;
       case "contact":
         return <Contact />;
+      case "archive":
+        return (
+          <Archive
+            onNavigate={handleNavigation}
+            onPostClick={handlePostClick}
+          />
+        );
+      case "privacy":
+        return <Privacy />;
+      case "terms":
+        return <Terms />;
       case "blog-detail":
         if (selectedPostId) {
           const post = SAMPLE_BLOG_POSTS.find((p) => p.id === selectedPostId);
@@ -174,7 +211,11 @@ function App() {
               </div>
 
               <div className="sidebar lg:col-span-1">
-                <Sidebar theme={theme} onThemeChange={setTheme} />
+                <Sidebar
+                  theme={theme}
+                  onThemeChange={setTheme}
+                  onTagClick={handleTagClick}
+                />
               </div>
             </div>
           </main>

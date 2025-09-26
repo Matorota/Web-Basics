@@ -1,20 +1,24 @@
 interface SidebarProps {
   theme: string;
   onThemeChange: (theme: string) => void;
+  onTagClick?: (tag: string) => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ theme, onThemeChange }) => {
+const Sidebar: React.FC<SidebarProps> = ({
+  theme,
+  onThemeChange,
+  onTagClick,
+}) => {
   const themes = [
-    { name: "blue", label: "Ocean Blue", color: "from-blue-500 to-cyan-500" },
     {
-      name: "green",
-      label: "Forest Green",
-      color: "from-green-500 to-emerald-500",
+      name: "black",
+      label: "Dark Mode",
+      color: "from-gray-900 to-black",
     },
     {
-      name: "purple",
-      label: "Royal Purple",
-      color: "from-purple-500 to-indigo-500",
+      name: "white",
+      label: "Bright White",
+      color: "from-blue-500 to-cyan-500",
     },
   ];
 
@@ -38,20 +42,7 @@ const Sidebar: React.FC<SidebarProps> = ({ theme, onThemeChange }) => {
       </div>
 
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-          <svg
-            className="w-5 h-5 text-gray-600 mr-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"
-            />
-          </svg>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">
           Choose Theme
         </h3>
         <div className="space-y-3">
@@ -72,17 +63,7 @@ const Sidebar: React.FC<SidebarProps> = ({ theme, onThemeChange }) => {
                 {themeOption.label}
               </span>
               {theme === themeOption.name && (
-                <svg
-                  className="w-4 h-4 text-blue-600 ml-auto"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <span className="text-blue-600 ml-auto font-bold">✓</span>
               )}
             </button>
           ))}
@@ -102,12 +83,13 @@ const Sidebar: React.FC<SidebarProps> = ({ theme, onThemeChange }) => {
             "Frontend",
             "Performance",
           ].map((tag) => (
-            <span
+            <button
               key={tag}
+              onClick={() => onTagClick?.(tag)}
               className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full hover:bg-blue-100 hover:text-blue-700 cursor-pointer transition-colors duration-200"
             >
               {tag}
-            </span>
+            </button>
           ))}
         </div>
       </div>
