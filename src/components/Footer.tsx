@@ -170,14 +170,6 @@ const Footer: React.FC<{ onNavigate?: (page: string) => void }> = ({
                   Terms of Service
                 </a>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-gray-900 transition-colors duration-200"
-                >
-                  RSS Feed
-                </a>
-              </li>
             </ul>
           </div>
         </div>

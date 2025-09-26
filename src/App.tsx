@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useMemo, useEffect, useCallback } from "react";
 import Header from "./components/Header";
 import BlogPost from "./components/BlogPost";
 import Sidebar from "./components/Sidebar";
@@ -14,7 +14,54 @@ import Archive from "./pages/Archive";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import { SAMPLE_BLOG_POSTS } from "./constants";
-import { useState, useMemo, useEffect } from "react";
+import "./styles/blog-styles.css";
+import "./styles/responsive-enhancements.css";
+import "./styles/simple-theme.css";
+
+const POSTS_PER_PAGE = 3;
+
+// Custom hook for smooth theme transitions
+const useThemeTransition = (initialTheme = "white") => {
+  const [theme, setTheme] = useState(initialTheme);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const switchTheme = useCallback(
+    (newTheme: string, event?: React.MouseEvent) => {
+      if (theme === newTheme || isTransitioning) return;
+
+      setIsTransitioning(true);
+
+      // Create ripple effect if event is provided
+      if (event) {
+        const ripple = document.createElement("div");
+        ripple.className = "theme-switch-ripple";
+        document.body.appendChild(ripple);
+
+        setTimeout(() => {
+          document.body.removeChild(ripple);
+        }, 1000);
+      }
+
+      // Add transitioning class
+      document.body.classList.add("theme-transitioning");
+
+      // Change theme after a short delay
+      setTimeout(() => {
+        setTheme(newTheme);
+        document.body.className = `theme-${newTheme}`;
+      }, 100);
+
+      // Remove transitioning class after animation completes
+      setTimeout(() => {
+        document.body.classList.remove("theme-transitioning");
+        setIsTransitioning(false);
+      }, 800);
+    },
+    [theme, isTransitioning]
+  );
+
+  return { theme, switchTheme, isTransitioning };
+};
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -22,8 +69,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [currentPageNum, setCurrentPageNum] = useState(1);
-  const [theme, setTheme] = useState("white");
-  const postsPerPage = 3;
+  const { theme, switchTheme, isTransitioning } = useThemeTransition("white");
 
   const categories = [
     "all",
@@ -47,11 +93,11 @@ function App() {
     });
   }, [searchQuery, selectedCategory]);
 
-  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-  const startIndex = (currentPageNum - 1) * postsPerPage;
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  const startIndex = (currentPageNum - 1) * POSTS_PER_PAGE;
   const currentPosts = filteredPosts.slice(
     startIndex,
-    startIndex + postsPerPage
+    startIndex + POSTS_PER_PAGE
   );
 
   const handleSearchChange = (query: string) => {
@@ -80,7 +126,14 @@ function App() {
     setSelectedPostId(null);
   };
 
-  React.useEffect(() => {
+  const handleThemeChange = useCallback(
+    (newTheme: string, event?: React.MouseEvent) => {
+      switchTheme(newTheme, event);
+    },
+    [switchTheme]
+  );
+
+  useEffect(() => {
     const handleCategoryFilter = (event: any) => {
       setSelectedCategory(event.detail);
       setCurrentPageNum(1);
@@ -92,10 +145,6 @@ function App() {
       window.removeEventListener("filterByCategory", handleCategoryFilter);
     };
   }, []);
-
-  useEffect(() => {
-    document.body.className = `theme-${theme}`;
-  }, [theme]);
 
   const themeClasses = {
     black: "theme-black",
@@ -136,10 +185,10 @@ function App() {
         return (
           <main
             id="main-content"
-            className="blog-layout max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
+            className="blog-layout max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
           >
-            <div className="blog-grid grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div className="main-content lg:col-span-2">
+            <div className="blog-grid grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-6 lg:gap-8">
+              <div className="main-content md:col-span-8 lg:col-span-8 xl:col-span-9">
                 <div className="mb-8">
                   <h1 className="text-3xl font-bold text-gray-900 mb-2">
                     Latest Posts
@@ -149,10 +198,12 @@ function App() {
                   </p>
                 </div>
 
-                <SearchBar
-                  searchQuery={searchQuery}
-                  onSearchChange={handleSearchChange}
-                />
+                <div className="w-full mb-6">
+                  <SearchBar
+                    searchQuery={searchQuery}
+                    onSearchChange={handleSearchChange}
+                  />
+                </div>
 
                 <FilterBar
                   categories={categories}
@@ -210,10 +261,10 @@ function App() {
                 />
               </div>
 
-              <div className="sidebar lg:col-span-1">
+              <div className="sidebar md:col-span-4 lg:col-span-4 xl:col-span-3">
                 <Sidebar
                   theme={theme}
-                  onThemeChange={setTheme}
+                  onThemeChange={handleThemeChange}
                   onTagClick={handleTagClick}
                 />
               </div>

@@ -1,0 +1,118 @@
+* {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease !important;
+}
+
+.theme-black *,
+.theme-white * {
+  animation: none !important;
+}
+
+.theme-black {
+  background: #1a202c !important;
+  color: #f7fafc !important;
+}
+
+.theme-white {
+  background: #f9fafb !important;
+  color: #374151 !important;
+}
+
+.blog-container::after,
+.blog-container::before,
+.blog-post::before,
+.blog-post::after,
+.search-input::after {
+  display: none !important;
+}
+
+.theme-black .blog-post {
+  background: rgba(45, 55, 72, 0.8) !important;
+  border: 1px solid rgba(71, 85, 105, 0.3) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+.theme-white .blog-post {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Simple search bar */
+.theme-black .search-input {
+  background: rgba(51, 65, 85, 0.8) !important;
+  border: 2px solid rgba(71, 85, 105, 0.5) !important;
+  color: #e2e8f0 !important;
+}
+
+@keyframes fadeInDark {
+}
+@keyframes morphToDark {
+}
+@keyframes morphToLight {
+}
+@keyframes searchToDark {
+}
+@keyframes textColorToDark {
+}
+@keyframes textColorToLight {
+}
+@keyframes colorWaveToDark {
+}
+@keyframes colorWaveToLight {
+}
+@keyframes cascadeToDark {
+}
+@keyframes footerToDark {
+}
+@keyframes sidebarToDark {
+}
+@keyframes morphElement {
+}
+@keyframes pulse {
+}
+@keyframes particleEffect {
+}
+@keyframes particle1 {
+}
+@keyframes rippleExpand {
+}
+
+.theme-black .blog-post:nth-child(1),
+.theme-black .blog-post:nth-child(2),
+.theme-black .blog-post:nth-child(3),
+.theme-black .sidebar,
+.theme-black footer {
+  animation-delay: 0s !important;
+}
+
+:root {
+  --transition-duration: 0.3s;
+  --transition-timing: ease;
+  --bounce-timing: ease;
+}
+
+/* Disable theme switching effects */
+.theme-switch-ripple,
+.theme-switch-particles,
+.theme-loading-overlay {
+  display: none !important;
+}
+
+.theme-transitioning {
+  pointer-events: auto !important;
+}
+
+/* Simple hover effects only */
+.blog-post:hover {
+  transform: none !important;
+}
+
+.theme-black .blog-post:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Remove transform animations */
+button:hover {
+  transform: none !important;
+}

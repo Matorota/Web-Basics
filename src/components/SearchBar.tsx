@@ -1,3 +1,5 @@
+import React from "react";
+
 interface SearchBarProps {
   searchQuery: string;
   onSearchChange: (query: string) => void;
@@ -8,11 +10,43 @@ const SearchBar: React.FC<SearchBarProps> = ({
   onSearchChange,
 }) => {
   return (
-    <div className="search-container mb-8">
-      <div className="relative max-w-md mx-auto lg:mx-0">
-        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+    <div className="search-container mb-6 sm:mb-8">
+      <div className="relative w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto">
+        <input
+          type="text"
+          placeholder="Search articles by title, content, author, or tags... "
+          value={searchQuery}
+          onChange={(e) => onSearchChange(e.target.value)}
+          className="
+            w-full 
+            px-4 py-3 
+            sm:px-5 sm:py-4
+            md:px-6 md:py-4
+            lg:px-6 lg:py-5
+            text-sm sm:text-base md:text-lg
+            border-2 border-gray-300 
+            rounded-lg 
+            bg-white 
+            text-gray-900 
+            placeholder-gray-500
+            focus:border-blue-500 
+            focus:ring-2 
+            focus:ring-blue-200 
+            focus:outline-none
+            transition-all duration-200
+            shadow-sm
+            hover:shadow-md
+            min-w-0
+            search-input
+          "
+          style={{
+            minWidth: "320px",
+            maxWidth: "100%",
+          }}
+        />
+        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
           <svg
-            className="h-5 w-5 text-gray-400"
+            className="w-5 h-5 text-gray-400"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -25,37 +59,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
             />
           </svg>
         </div>
-        <input
-          id="search-input"
-          type="text"
-          value={searchQuery}
-          onChange={(e) => onSearchChange(e.target.value)}
-          placeholder="Search posts, tags, or authors..."
-          className="search-input block w-full pl-12 pr-12 py-4 bg-white border-2 border-gray-200 rounded-xl text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm transition-all duration-200 hover:border-gray-300"
-        />
-        {searchQuery && (
-          <button
-            onClick={() => onSearchChange("")}
-            className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 transition-colors duration-200"
-          >
-            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fillRule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </button>
-        )}
       </div>
-      {searchQuery && (
-        <div className="mt-3 text-center lg:text-left">
-          <p className="text-sm text-gray-600">
-            Showing results for "
-            <span className="font-semibold text-gray-900">{searchQuery}</span>"
-          </p>
-        </div>
-      )}
     </div>
   );
 };
