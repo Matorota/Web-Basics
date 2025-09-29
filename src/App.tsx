@@ -66,7 +66,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [currentPageNum, setCurrentPageNum] = useState(1);
-  const { theme, switchTheme, isTransitioning } = useThemeTransition("white");
+  const { theme, switchTheme } = useThemeTransition("white");
 
   const categories = [
     "all",
