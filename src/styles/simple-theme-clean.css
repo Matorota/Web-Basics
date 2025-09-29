@@ -1,0 +1,242 @@
+* {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease !important;
+  animation: none !important;
+}
+
+.theme-black {
+  background: #1a202c !important;
+  color: #f7fafc !important;
+}
+
+.theme-white {
+  background: #f9fafb !important;
+  color: #374151 !important;
+}
+
+.blog-container::after,
+.blog-container::before,
+.blog-post::before,
+.blog-post::after,
+.search-input::after {
+  display: none !important;
+}
+
+.theme-black .blog-post {
+  background: rgba(45, 55, 72, 0.8) !important;
+  border: 1px solid rgba(71, 85, 105, 0.3) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+.theme-white .blog-post {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.theme-black .search-input {
+  background: rgba(51, 65, 85, 0.8) !important;
+  border: 2px solid rgba(71, 85, 105, 0.5) !important;
+  color: #e2e8f0 !important;
+}
+
+.theme-switch-ripple,
+.theme-switch-particles,
+.theme-loading-overlay {
+  display: none !important;
+}
+
+.blog-post:hover {
+  transform: none !important;
+}
+
+button:hover {
+  transform: none !important;
+}
+
+.sidebar {
+  width: 100%;
+}
+
+.sidebar-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  margin-bottom: 24px;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.sidebar-heading {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.sidebar-text {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.sidebar-author {
+  margin-top: 16px;
+}
+
+.sidebar-author-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.sidebar-author-role {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.theme-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.theme-btn {
+  width: 100%;
+  padding: 12px 16px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.theme-btn:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.theme-btn-active {
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+.theme-btn-active:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.theme-btn-check {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-btn {
+  padding: 6px 12px;
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 12px;
+  font-weight: 500;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tag-btn:hover {
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.theme-black .sidebar-card {
+  background: rgba(45, 55, 72, 0.85);
+  border: 1px solid rgba(71, 85, 105, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.theme-black .sidebar-heading {
+  color: #f1f5f9;
+}
+
+.theme-black .sidebar-text {
+  color: #cbd5e1;
+}
+
+.theme-black .sidebar-author-name {
+  color: #f1f5f9;
+}
+
+.theme-black .sidebar-author-role {
+  color: #94a3b8;
+}
+
+.theme-black .theme-btn {
+  background: rgba(51, 65, 85, 0.6);
+  border: 1px solid rgba(71, 85, 105, 0.4);
+  color: #e2e8f0;
+}
+
+.theme-black .theme-btn:hover {
+  background: rgba(71, 85, 105, 0.7);
+  border-color: rgba(100, 116, 139, 0.5);
+}
+
+.theme-black .theme-btn-active {
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+.theme-black .theme-btn-active:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.theme-black .tag-btn {
+  background: rgba(51, 65, 85, 0.6);
+  color: #cbd5e1;
+}
+
+.theme-black .tag-btn:hover {
+  background: rgba(71, 85, 105, 0.8);
+  color: #f1f5f9;
+}
+
+@media (min-width: 640px) {
+  .sidebar-card {
+    padding: 28px;
+  }
+
+  .sidebar-heading {
+    font-size: 20px;
+  }
+
+  .sidebar-text {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .sidebar-card {
+    padding: 32px;
+  }
+}

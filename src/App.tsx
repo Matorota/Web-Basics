@@ -15,12 +15,11 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import { SAMPLE_BLOG_POSTS } from "./constants";
 import "./styles/blog-styles.css";
-import "./styles/responsive-enhancements.css";
-import "./styles/simple-theme.css";
+import "./styles/responsive-clean.css";
+import "./styles/simple-theme-clean.css";
 
 const POSTS_PER_PAGE = 3;
 
-// Custom hook for smooth theme transitions
 const useThemeTransition = (initialTheme = "white") => {
   const [theme, setTheme] = useState(initialTheme);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -30,8 +29,6 @@ const useThemeTransition = (initialTheme = "white") => {
       if (theme === newTheme || isTransitioning) return;
 
       setIsTransitioning(true);
-
-      // Create ripple effect if event is provided
       if (event) {
         const ripple = document.createElement("div");
         ripple.className = "theme-switch-ripple";

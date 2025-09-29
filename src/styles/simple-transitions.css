@@ -38,44 +38,10 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Simple search bar */
 .theme-black .search-input {
   background: rgba(51, 65, 85, 0.8) !important;
   border: 2px solid rgba(71, 85, 105, 0.5) !important;
   color: #e2e8f0 !important;
-}
-
-@keyframes fadeInDark {
-}
-@keyframes morphToDark {
-}
-@keyframes morphToLight {
-}
-@keyframes searchToDark {
-}
-@keyframes textColorToDark {
-}
-@keyframes textColorToLight {
-}
-@keyframes colorWaveToDark {
-}
-@keyframes colorWaveToLight {
-}
-@keyframes cascadeToDark {
-}
-@keyframes footerToDark {
-}
-@keyframes sidebarToDark {
-}
-@keyframes morphElement {
-}
-@keyframes pulse {
-}
-@keyframes particleEffect {
-}
-@keyframes particle1 {
-}
-@keyframes rippleExpand {
 }
 
 .theme-black .blog-post:nth-child(1),
@@ -92,7 +58,6 @@
   --bounce-timing: ease;
 }
 
-/* Disable theme switching effects */
 .theme-switch-ripple,
 .theme-switch-particles,
 .theme-loading-overlay {
@@ -103,7 +68,6 @@
   pointer-events: auto !important;
 }
 
-/* Simple hover effects only */
 .blog-post:hover {
   transform: none !important;
 }
@@ -112,7 +76,6 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* Remove transform animations */
 button:hover {
   transform: none !important;
 }
