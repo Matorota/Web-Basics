@@ -145,7 +145,7 @@ function App() {
     white: "theme-white",
   };
 
-  const renderContent = () => {
+  const renderMainContent = () => {
     switch (currentPage) {
       case "about":
         return <About onNavigate={handleNavigation} />;
@@ -167,105 +167,91 @@ function App() {
       case "blog-detail":
         if (selectedPostId) {
           const post = SAMPLE_BLOG_POSTS.find((p) => p.id === selectedPostId);
-          return post ? (
-            <BlogPostDetail
-              post={post}
-              onBack={() => handleNavigation("home")}
-            />
-          ) : null;
+          return post ? <BlogPostDetail post={post} /> : null;
         }
         return null;
       default:
         return (
-          <main
-            id="main-content"
-            className="blog-layout max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
-          >
-            <div className="blog-grid grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-6 lg:gap-8">
-              <div className="main-content md:col-span-8 lg:col-span-8 xl:col-span-9">
-                <div className="mb-8">
-                  <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                    Latest Posts
-                  </h1>
-                  <p className="text-gray-600">
-                    Discover our latest articles and insights
+          <div>
+            <div className="w-full mb-6">
+              <SearchBar
+                searchQuery={searchQuery}
+                onSearchChange={handleSearchChange}
+              />
+            </div>
+
+            <FilterBar
+              categories={categories}
+              selectedCategory={selectedCategory}
+              onCategoryChange={handleCategoryChange}
+            />
+
+            <div className="space-y-8">
+              {currentPosts.length > 0 ? (
+                currentPosts.map((post) => (
+                  <article
+                    key={post.id}
+                    className="blog-post cursor-pointer"
+                    onClick={() => handlePostClick(post.id)}
+                  >
+                    <BlogPost
+                      title={post.title}
+                      excerpt={post.excerpt}
+                      author={post.author}
+                      date={post.date}
+                      readTime={post.readTime}
+                      tags={post.tags}
+                      imageUrl={post.imageUrl}
+                    />
+                  </article>
+                ))
+              ) : (
+                <div className="text-center py-12">
+                  <svg
+                    className="mx-auto h-12 w-12 text-gray-400 mb-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">
+                    No posts found
+                  </h3>
+                  <p className="text-gray-500">
+                    Try adjusting your search terms or filters
                   </p>
                 </div>
-
-                <div className="w-full mb-6">
-                  <SearchBar
-                    searchQuery={searchQuery}
-                    onSearchChange={handleSearchChange}
-                  />
-                </div>
-
-                <FilterBar
-                  categories={categories}
-                  selectedCategory={selectedCategory}
-                  onCategoryChange={handleCategoryChange}
-                />
-
-                <div className="space-y-8">
-                  {currentPosts.length > 0 ? (
-                    currentPosts.map((post) => (
-                      <article
-                        key={post.id}
-                        className="blog-post cursor-pointer"
-                        onClick={() => handlePostClick(post.id)}
-                      >
-                        <BlogPost
-                          title={post.title}
-                          excerpt={post.excerpt}
-                          author={post.author}
-                          date={post.date}
-                          readTime={post.readTime}
-                          tags={post.tags}
-                        />
-                      </article>
-                    ))
-                  ) : (
-                    <div className="text-center py-12">
-                      <svg
-                        className="mx-auto h-12 w-12 text-gray-400 mb-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                        />
-                      </svg>
-                      <h3 className="text-lg font-medium text-gray-900 mb-2">
-                        No posts found
-                      </h3>
-                      <p className="text-gray-500">
-                        Try adjusting your search terms or filters
-                      </p>
-                    </div>
-                  )}
-                </div>
-
-                <Pagination
-                  currentPage={currentPageNum}
-                  totalPages={totalPages}
-                  onPageChange={setCurrentPageNum}
-                />
-              </div>
-
-              <div className="sidebar md:col-span-4 lg:col-span-4 xl:col-span-3">
-                <Sidebar
-                  theme={theme}
-                  onThemeChange={handleThemeChange}
-                  onTagClick={handleTagClick}
-                />
-              </div>
+              )}
             </div>
-          </main>
+
+            {currentPage === "home" && (
+              <Pagination
+                currentPage={currentPageNum}
+                totalPages={totalPages}
+                onPageChange={setCurrentPageNum}
+              />
+            )}
+          </div>
         );
     }
+  };
+
+  const renderSidebar = () => {
+    const sidebarProps = {
+      theme,
+      onThemeChange: handleThemeChange,
+      onTagClick: handleTagClick,
+      currentPage,
+      onNavigate: handleNavigation,
+    };
+
+    return <Sidebar {...sidebarProps} />;
   };
 
   return (
@@ -274,11 +260,24 @@ function App() {
         themeClasses[theme as keyof typeof themeClasses]
       }`}
     >
-      <div id="main-header">
+      <div id="main-header" className="sticky top-0 z-50 bg-inherit">
         <Header currentPage={currentPage} onNavigate={handleNavigation} />
       </div>
 
-      {renderContent()}
+      <main
+        id="main-content"
+        className="blog-layout max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
+      >
+        <div className="blog-grid grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-6 lg:gap-8">
+          <div className="main-content md:col-span-8 lg:col-span-8 xl:col-span-9">
+            {renderMainContent()}
+          </div>
+
+          <div className="sidebar md:col-span-4 lg:col-span-4 xl:col-span-3 sticky top-24 h-fit z-10">
+            {renderSidebar()}
+          </div>
+        </div>
+      </main>
 
       <Footer onNavigate={handleNavigation} />
     </div>

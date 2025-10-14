@@ -59,19 +59,19 @@ const Categories: React.FC<CategoriesProps> = ({ onNavigate }) => {
   const getIcon = (categoryName: string) => {
     switch (categoryName) {
       case "React":
-        return "React";
+        return "⚛️";
       case "TypeScript":
-        return "TS";
+        return "📘";
       case "CSS":
-        return "CSS";
+        return "🎨";
       case "JavaScript":
-        return "JS";
+        return "⚡";
       case "Frontend":
-        return "Frontend";
+        return "🖥️";
       case "Performance":
-        return "Performance";
+        return "🚀";
       default:
-        return "Dev";
+        return "📚";
     }
   };
 
@@ -95,9 +95,7 @@ const Categories: React.FC<CategoriesProps> = ({ onNavigate }) => {
           >
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center space-x-3">
-                <span className="text-sm font-medium px-2 py-1 bg-blue-100 text-blue-700 rounded">
-                  {getIcon(category.name)}
-                </span>
+                <span className="text-2xl">{getIcon(category.name)}</span>
                 <h3 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
                   {category.name}
                 </h3>

@@ -1,6 +1,11 @@
 import React from "react";
 
-const Privacy: React.FC = () => {
+interface PrivacyProps {
+  onNavigate?: (page: string) => void;
+  onTagClick?: (tag: string) => void;
+}
+
+const Privacy: React.FC<PrivacyProps> = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-12">

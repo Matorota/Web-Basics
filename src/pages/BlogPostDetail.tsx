@@ -3,32 +3,11 @@ import type { BlogPostType } from "../constants";
 
 interface BlogPostDetailProps {
   post: BlogPostType;
-  onBack: () => void;
 }
 
-const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ post, onBack }) => {
+const BlogPostDetail: React.FC<BlogPostDetailProps> = ({ post }) => {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <button
-        onClick={onBack}
-        className="flex items-center text-blue-600 hover:text-blue-800 mb-8 transition-colors duration-200"
-      >
-        <svg
-          className="w-4 h-4 mr-2"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 19l-7-7 7-7"
-          />
-        </svg>
-        Back to Posts
-      </button>
-
       <header className="mb-8">
         <div className="flex items-center text-sm text-gray-500 mb-4">
           <div className="flex items-center">
@@ -229,6 +208,202 @@ export const BlogPost: React.FC<BlogPostProps> = ({
   );
 };`}</code>
                   </pre>
+                </div>
+
+                {/* Interactive Code Showcase with Image Layout */}
+                <div className="my-12 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+                    Component Architecture Visualization
+                  </h3>
+
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {/* Component Demo 1 */}
+                    <div className="relative group">
+                      <div
+                        className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                        style={{ zIndex: 20 }}
+                      >
+                        <div className="relative mb-4">
+                          {/* Mock Component Preview */}
+                          <div
+                            className="w-full h-32 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center text-white font-mono text-sm"
+                            style={{ zIndex: 25 }}
+                          >
+                            &lt;Header /&gt;
+                          </div>
+                          {/* Floating Code Icon */}
+                          <div
+                            className="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-xs font-bold text-gray-800"
+                            style={{ zIndex: 30 }}
+                          >
+                            JS
+                          </div>
+                        </div>
+                        <h4 className="font-semibold text-gray-900 mb-2">
+                          Header Component
+                        </h4>
+                        <p className="text-sm text-gray-600">
+                          Reusable navigation with responsive design
+                        </p>
+
+                        {/* Code snippet preview */}
+                        <div className="mt-3 bg-gray-100 rounded p-2 text-xs font-mono overflow-hidden">
+                          <div className="text-gray-700">
+                            const Header = () =&gt; {`{`}
+                          </div>
+                          <div className="text-gray-500 ml-2">
+                            return &lt;nav&gt;...&lt;/nav&gt;
+                          </div>
+                          <div className="text-gray-700">{`}`}</div>
+                        </div>
+                      </div>
+
+                      {/* Decorative Elements */}
+                      <div
+                        className="absolute -bottom-2 -right-2 w-4 h-4 bg-blue-300 rounded-full opacity-60 group-hover:animate-ping"
+                        style={{ zIndex: 15 }}
+                      />
+                    </div>
+
+                    {/* Component Demo 2 */}
+                    <div className="relative group">
+                      <div
+                        className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                        style={{ zIndex: 20 }}
+                      >
+                        <div className="relative mb-4">
+                          <div
+                            className="w-full h-32 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center text-white font-mono text-sm"
+                            style={{ zIndex: 25 }}
+                          >
+                            &lt;Card /&gt;
+                          </div>
+                          <div
+                            className="absolute -top-2 -right-2 w-8 h-8 bg-purple-400 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                            style={{ zIndex: 30 }}
+                          >
+                            TS
+                          </div>
+                        </div>
+                        <h4 className="font-semibold text-gray-900 mb-2">
+                          Card Component
+                        </h4>
+                        <p className="text-sm text-gray-600">
+                          Flexible container with props interface
+                        </p>
+
+                        <div className="mt-3 bg-gray-100 rounded p-2 text-xs font-mono overflow-hidden">
+                          <div className="text-gray-700">
+                            interface CardProps {`{`}
+                          </div>
+                          <div className="text-gray-500 ml-2">
+                            title: string;
+                          </div>
+                          <div className="text-gray-700">{`}`}</div>
+                        </div>
+                      </div>
+
+                      <div
+                        className="absolute -bottom-2 -left-2 w-4 h-4 bg-green-300 rounded-full opacity-60 group-hover:animate-bounce"
+                        style={{ zIndex: 15 }}
+                      />
+                    </div>
+
+                    {/* Component Demo 3 */}
+                    <div className="relative group md:col-span-2 lg:col-span-1">
+                      <div
+                        className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                        style={{ zIndex: 20 }}
+                      >
+                        <div className="relative mb-4">
+                          <div
+                            className="w-full h-32 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg flex items-center justify-center text-white font-mono text-sm"
+                            style={{ zIndex: 25 }}
+                          >
+                            &lt;Button /&gt;
+                          </div>
+                          <div
+                            className="absolute -top-2 -right-2 w-8 h-8 bg-red-400 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                            style={{ zIndex: 30 }}
+                          >
+                            CSS
+                          </div>
+                        </div>
+                        <h4 className="font-semibold text-gray-900 mb-2">
+                          Button Component
+                        </h4>
+                        <p className="text-sm text-gray-600">
+                          Interactive element with multiple variants
+                        </p>
+
+                        <div className="mt-3 bg-gray-100 rounded p-2 text-xs font-mono overflow-hidden">
+                          <div className="text-gray-700">
+                            const Button = (props) =&gt; {`{`}
+                          </div>
+                          <div className="text-gray-500 ml-2">
+                            // variants logic
+                          </div>
+                          <div className="text-gray-700">{`}`}</div>
+                        </div>
+                      </div>
+
+                      <div
+                        className="absolute top-0 -left-2 w-6 h-6 bg-pink-300 rounded-full opacity-60 group-hover:animate-pulse"
+                        style={{ zIndex: 15 }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Architecture Flow Diagram */}
+                  <div className="mt-8 relative">
+                    <div className="text-center mb-4">
+                      <h4 className="text-lg font-semibold text-gray-900">
+                        Component Hierarchy
+                      </h4>
+                    </div>
+
+                    <div className="flex items-center justify-center space-x-4">
+                      <div
+                        className="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-mono"
+                        style={{ zIndex: 25 }}
+                      >
+                        App
+                      </div>
+                      <div className="w-8 h-0.5 bg-gray-400" />
+                      <div
+                        className="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-mono"
+                        style={{ zIndex: 25 }}
+                      >
+                        Layout
+                      </div>
+                      <div className="w-8 h-0.5 bg-gray-400" />
+                      <div
+                        className="bg-purple-500 text-white px-4 py-2 rounded-lg text-sm font-mono"
+                        style={{ zIndex: 25 }}
+                      >
+                        Components
+                      </div>
+                    </div>
+
+                    {/* Connecting Lines */}
+                    <div
+                      className="absolute top-12 left-1/2 transform -translate-x-1/2 w-px h-8 bg-gray-300"
+                      style={{ zIndex: 20 }}
+                    />
+
+                    {/* Background Pattern */}
+                    <div className="absolute inset-0 opacity-5">
+                      <div
+                        className="w-full h-full"
+                        style={{
+                          backgroundImage:
+                            "radial-gradient(circle at 50% 50%, #3B82F6 1px, transparent 1px)",
+                          backgroundSize: "20px 20px",
+                          zIndex: 10,
+                        }}
+                      />
+                    </div>
+                  </div>
                 </div>
               </>
             )}

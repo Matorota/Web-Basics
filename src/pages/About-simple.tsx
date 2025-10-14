@@ -39,7 +39,8 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
         <h2 className="text-2xl font-bold text-gray-900 mb-6">What We Cover</h2>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center">
+              <span className="mr-2">⚛️</span>
               Frontend Development
             </h3>
             <p className="text-gray-600 text-sm">
@@ -47,7 +48,8 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
             </p>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center">
+              <span className="mr-2">🚀</span>
               Performance
             </h3>
             <p className="text-gray-600 text-sm">
@@ -55,7 +57,8 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
             </p>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center">
+              <span className="mr-2">🎨</span>
               Design & UX
             </h3>
             <p className="text-gray-600 text-sm">
@@ -63,7 +66,8 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
             </p>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center">
+              <span className="mr-2">🛠️</span>
               Tools & Workflows
             </h3>
             <p className="text-gray-600 text-sm">
@@ -79,10 +83,10 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
         <div className="space-y-4">
           <div className="flex items-center space-x-4">
             <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
-              MS
+              JS
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900">Matas Strimaitis</h3>
+              <h3 className="font-semibold text-gray-900">John Smith</h3>
               <p className="text-gray-600 text-sm">
                 Frontend Developer & Content Creator
               </p>
@@ -90,10 +94,10 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
           </div>
           <div className="flex items-center space-x-4">
             <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-semibold">
-              JK
+              AD
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900">Justas Kazlauskas</h3>
+              <h3 className="font-semibold text-gray-900">Alex Davis</h3>
               <p className="text-gray-600 text-sm">
                 Full-Stack Developer & Technical Writer
               </p>
@@ -101,12 +105,10 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
           </div>
           <div className="flex items-center space-x-4">
             <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-semibold">
-              GP
+              SW
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900">
-                Gabrielė Petrauskaitė
-              </h3>
+              <h3 className="font-semibold text-gray-900">Sarah Wilson</h3>
               <p className="text-gray-600 text-sm">
                 UI/UX Designer & Frontend Specialist
               </p>

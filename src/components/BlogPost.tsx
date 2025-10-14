@@ -5,6 +5,7 @@ interface BlogPostProps {
   date: string;
   readTime: string;
   tags: string[];
+  imageUrl?: string;
 }
 
 const BlogPost: React.FC<BlogPostProps> = ({
@@ -14,6 +15,7 @@ const BlogPost: React.FC<BlogPostProps> = ({
   date,
   readTime,
   tags,
+  imageUrl,
 }) => {
   return (
     <article className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-all duration-300 group">
@@ -48,6 +50,16 @@ const BlogPost: React.FC<BlogPostProps> = ({
         </h2>
 
         <p className="text-gray-600 mb-6 leading-relaxed text-lg">{excerpt}</p>
+
+        {imageUrl && (
+          <div className="my-6 rounded-lg overflow-hidden">
+            <img
+              src={imageUrl}
+              alt={title}
+              className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        )}
 
         <div className="flex items-center justify-between">
           <div className="flex flex-wrap gap-2">

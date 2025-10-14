@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 
+interface FormErrors {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+}
+
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -8,7 +15,37 @@ const Contact: React.FC = () => {
     message: "",
   });
 
+  const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Regex patterns for validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const nameRegex = /^[a-zA-ZāčēģīķļņšūžĀČĒĢĪĶĻŅŠŪŽ\s]{2,50}$/;
+  const subjectRegex = /^.{3,100}$/;
+  const messageRegex = /^.{10,500}$/;
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    if (!nameRegex.test(formData.name)) {
+      newErrors.name = "Name must be 2-50 characters, letters only";
+    }
+
+    if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+
+    if (!subjectRegex.test(formData.subject)) {
+      newErrors.subject = "Subject must be 3-100 characters long";
+    }
+
+    if (!messageRegex.test(formData.message)) {
+      newErrors.message = "Message must be 10-500 characters long";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -20,17 +57,29 @@ const Contact: React.FC = () => {
       ...prev,
       [name]: value,
     }));
+
+    // Clear error when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: undefined,
+      }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setIsSubmitted(true);
 
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 3000);
+    if (validateForm()) {
+      console.log("Form submitted:", formData);
+      setIsSubmitted(true);
+
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setErrors({});
+      }, 3000);
+    }
   };
 
   return (
@@ -78,9 +127,14 @@ const Contact: React.FC = () => {
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 ${
+                      errors.name ? "border-red-500" : "border-gray-300"
+                    }`}
                     placeholder="Your full name"
                   />
+                  {errors.name && (
+                    <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+                  )}
                 </div>
                 <div>
                   <label
@@ -96,9 +150,14 @@ const Contact: React.FC = () => {
                     required
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 ${
+                      errors.email ? "border-red-500" : "border-gray-300"
+                    }`}
                     placeholder="your.email@example.com"
                   />
+                  {errors.email && (
+                    <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                  )}
                 </div>
               </div>
 
@@ -109,22 +168,21 @@ const Contact: React.FC = () => {
                 >
                   Subject *
                 </label>
-                <select
+                <input
+                  type="text"
                   id="subject"
                   name="subject"
                   required
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
-                >
-                  <option value="">Select a topic</option>
-                  <option value="general">General Inquiry</option>
-                  <option value="collaboration">Collaboration</option>
-                  <option value="feedback">Feedback</option>
-                  <option value="bug-report">Bug Report</option>
-                  <option value="feature-request">Feature Request</option>
-                  <option value="other">Other</option>
-                </select>
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 ${
+                    errors.subject ? "border-red-500" : "border-gray-300"
+                  }`}
+                  placeholder="What's this about?"
+                />
+                {errors.subject && (
+                  <p className="mt-1 text-sm text-red-600">{errors.subject}</p>
+                )}
               </div>
 
               <div>
@@ -141,9 +199,14 @@ const Contact: React.FC = () => {
                   required
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 resize-none"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 resize-none ${
+                    errors.message ? "border-red-500" : "border-gray-300"
+                  }`}
                   placeholder="Tell us more about your inquiry..."
                 />
+                {errors.message && (
+                  <p className="mt-1 text-sm text-red-600">{errors.message}</p>
+                )}
               </div>
 
               <button
