@@ -95,7 +95,7 @@ const Contact: React.FC = () => {
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-12">
+      <div className="max-w-2xl mx-auto">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
             Send us a Message
@@ -217,78 +217,6 @@ const Contact: React.FC = () => {
               </button>
             </form>
           )}
-        </div>
-
-        <div className="space-y-8">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              Other Ways to Reach Us
-            </h2>
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div>
-                  <h3 className="font-semibold text-gray-900">Email</h3>
-                  <p className="text-gray-600 mt-1">hello@myblog.com</p>
-                  <p className="text-sm text-gray-500 mt-1">
-                    We typically respond within 24 hours
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div>
-                  <h3 className="font-semibold text-gray-900">Live Chat</h3>
-                  <p className="text-gray-600 mt-1">
-                    Available Mon-Fri, 9AM-6PM EST
-                  </p>
-                  <p className="text-sm text-gray-500 mt-1">
-                    Click the chat bubble in the bottom right
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div>
-                  <h3 className="font-semibold text-gray-900">Social Media</h3>
-                  <p className="text-gray-600 mt-1">@myblog on Twitter</p>
-                  <p className="text-sm text-gray-500 mt-1">
-                    Follow us for updates and quick questions
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3 text-sm">
-                <span className="text-gray-700">
-                  How often do you publish new content?
-                </span>
-              </div>
-              <div className="flex items-center gap-3 text-sm">
-                <span className="text-gray-700">
-                  Can I contribute as a guest author?
-                </span>
-              </div>
-              <div className="flex items-center gap-3 text-sm">
-                <span className="text-gray-700">
-                  Do you offer consulting services?
-                </span>
-              </div>
-              <div className="flex items-center gap-3 text-sm">
-                <span className="text-gray-700">
-                  How can I request a tutorial topic?
-                </span>
-              </div>
-            </div>
-            <button className="mt-4 text-blue-600 hover:text-blue-700 font-medium text-sm flex items-center gap-1">
-              View all FAQs
-            </button>
-          </div>
         </div>
       </div>
     </div>

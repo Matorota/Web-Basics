@@ -22,13 +22,12 @@ const Archive: React.FC<ArchiveProps> = ({ onPostClick }) => {
   }, {} as { [key: string]: typeof SAMPLE_BLOG_POSTS });
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-4xl mx-auto px-4 py-8 text-center">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Archive</h1>
-        <p className="text-gray-600">Browse all posts by date</p>
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y-8 text-left">
         {Object.entries(groupedPosts).map(([month, posts]) => (
           <div key={month} className="border-b border-gray-200 pb-8">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">

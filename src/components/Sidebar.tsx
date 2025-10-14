@@ -61,50 +61,79 @@ const Sidebar: React.FC<SidebarProps> = ({
     switch (currentPage) {
       case "contact":
         return (
-          <div
-            className={`${colors.bgColor} rounded-xl shadow-sm border ${colors.borderColor} p-6`}
-          >
-            <h3 className={`text-lg font-semibold ${colors.titleColor} mb-4`}>
-              Contact Info
-            </h3>
-            <div className="space-y-3 text-sm">
-              <div className="flex items-center space-x-2">
-                <svg
-                  className={`w-4 h-4 ${colors.secondaryTextColor}`}
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                </svg>
-                <span className={colors.textColor}>contact@myblog.com</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <svg
-                  className={`w-4 h-4 ${colors.secondaryTextColor}`}
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className={colors.textColor}>Vilnius, Lithuania</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <svg
-                  className={`w-4 h-4 ${colors.secondaryTextColor}`}
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                </svg>
-                <span className={colors.textColor}>+370 600 12345</span>
+          <>
+            <div
+              className={`${colors.bgColor} rounded-xl shadow-sm border ${colors.borderColor} p-6 mb-6`}
+            >
+              <h3 className={`text-lg font-semibold ${colors.titleColor} mb-4`}>
+                Other Ways to Reach Us
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <h4 className={`font-semibold ${colors.textColor} text-sm`}>
+                    Email
+                  </h4>
+                  <p className={`${colors.secondaryTextColor} text-sm mt-1`}>
+                    hello@myblog.com
+                  </p>
+                  <p className={`${colors.secondaryTextColor} text-xs mt-1`}>
+                    We typically respond within 24 hours
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className={`font-semibold ${colors.textColor} text-sm`}>
+                    Live Chat
+                  </h4>
+                  <p className={`${colors.secondaryTextColor} text-sm mt-1`}>
+                    Available Mon-Fri, 9AM-6PM EST
+                  </p>
+                  <p className={`${colors.secondaryTextColor} text-xs mt-1`}>
+                    Click the chat bubble in the bottom right
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className={`font-semibold ${colors.textColor} text-sm`}>
+                    Social Media
+                  </h4>
+                  <p className={`${colors.secondaryTextColor} text-sm mt-1`}>
+                    @myblog on Twitter
+                  </p>
+                  <p className={`${colors.secondaryTextColor} text-xs mt-1`}>
+                    Follow us for updates and quick questions
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+
+            <div
+              className={`${colors.bgColor} rounded-xl shadow-sm border ${colors.borderColor} p-6`}
+            >
+              <h3 className={`text-lg font-semibold ${colors.titleColor} mb-4`}>
+                Frequently Asked Questions
+              </h3>
+              <div className="space-y-3">
+                <div className={`text-sm ${colors.secondaryTextColor}`}>
+                  How often do you publish new content?
+                </div>
+                <div className={`text-sm ${colors.secondaryTextColor}`}>
+                  Can I contribute as a guest author?
+                </div>
+                <div className={`text-sm ${colors.secondaryTextColor}`}>
+                  Do you offer consulting services?
+                </div>
+                <div className={`text-sm ${colors.secondaryTextColor}`}>
+                  How can I request a tutorial topic?
+                </div>
+              </div>
+              <button
+                className={`mt-4 text-blue-600 hover:text-blue-700 font-medium text-sm flex items-center gap-1`}
+              >
+                View all FAQs
+              </button>
+            </div>
+          </>
         );
 
       case "archive":
@@ -214,16 +243,19 @@ const Sidebar: React.FC<SidebarProps> = ({
             </h3>
             <div className="space-y-2">
               {[
-                "Home",
-                "About",
-                "Categories",
-                "Contact",
-                "Archive",
-                "Terms",
+                "React",
+                "TypeScript",
+                "CSS",
+                "JavaScript",
+                "Frontend",
+                "Performance",
               ].map((item) => (
                 <button
                   key={item}
-                  onClick={() => onNavigate?.(item.toLowerCase())}
+                  onClick={() => {
+                    onNavigate?.("home");
+                    onTagClick?.(item);
+                  }}
                   className={`w-full text-left px-4 py-3 text-sm ${colors.buttonText} ${colors.buttonBg} rounded-lg transition-all duration-200 transform hover:scale-105 border border-transparent hover:border-blue-300`}
                 >
                   {item}
