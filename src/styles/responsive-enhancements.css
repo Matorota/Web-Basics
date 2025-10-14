@@ -1,10 +1,7 @@
-/* Enhanced responsive design for search bar and layout */
-
-/* Search bar responsive improvements */
 .search-input {
   font-size: 14px;
   padding: 12px 16px;
-  min-height: 48px; /* Minimum touch target size for mobile */
+  min-height: 48px;
   transition: background 0.6s var(--transition-timing),
     border-color 0.5s ease-out, color 0.4s ease-out,
     box-shadow 0.6s var(--transition-timing),
@@ -73,7 +70,6 @@
   }
 }
 
-/* Container responsive improvements */
 .blog-container {
   font-family: "Inter", sans-serif;
   color: #374151;
@@ -129,7 +125,6 @@
   }
 }
 
-/* Grid responsive improvements */
 .blog-grid {
   gap: 16px;
 }
@@ -152,7 +147,6 @@
   }
 }
 
-/* Search container responsive */
 .search-container {
   margin-bottom: 24px;
 }
@@ -169,7 +163,6 @@
   }
 }
 
-/* Blog post with solid white background to make them pop */
 .blog-post {
   margin-bottom: 24px;
   padding: 20px;
@@ -224,7 +217,6 @@
   }
 }
 
-/* Clean blog post styling - solid white background */
 article.blog-post {
   background: #ffffff !important;
   border-radius: 12px !important;
@@ -232,7 +224,6 @@ article.blog-post {
   border: 1px solid rgba(0, 0, 0, 0.05) !important;
 }
 
-/* Ensure BlogPost component inner elements don't override background */
 .blog-post > div,
 .blog-post > section,
 .blog-post > article {
@@ -241,7 +232,6 @@ article.blog-post {
   border: none;
 }
 
-/* Override any potential white backgrounds in nested elements */
 .blog-post .bg-white,
 .blog-post [class*="bg-white"],
 .blog-post *[class*="bg-white"] {
@@ -258,14 +248,12 @@ article.blog-post {
   box-shadow: none !important;
 }
 
-/* More aggressive overrides for all possible white backgrounds */
 .blog-post *,
 .blog-post *::before,
 .blog-post *::after {
   background-color: transparent !important;
 }
 
-/* Specific overrides for common Tailwind classes */
 .blog-post .rounded-lg,
 .blog-post .rounded,
 .blog-post .border,
@@ -276,7 +264,6 @@ article.blog-post {
   border: none !important;
 }
 
-/* Override any card-like containers */
 .blog-post .card,
 .blog-post .container,
 .blog-post [class*="card"],
@@ -287,7 +274,6 @@ article.blog-post {
   border: none !important;
 }
 
-/* Ensure consistent spacing without white containers */
 .blog-post + .blog-post {
   margin-top: 2rem;
 }
@@ -304,7 +290,6 @@ article.blog-post {
   }
 }
 
-/* Sidebar positioning - move up slightly */
 .sidebar {
   margin-top: 0;
   transition: color 0.5s ease-out, transform 0.6s var(--bounce-timing) !important;
@@ -328,7 +313,6 @@ article.blog-post {
   }
 }
 
-/* Main content responsive improvements */
 .main-content h1 {
   font-size: 24px;
   margin-bottom: 12px;
@@ -362,17 +346,15 @@ article.blog-post {
   }
 }
 
-/* Search input focus improvements */
 .search-input:focus {
   border-color: #3b82f6 !important;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
   transform: translateY(-1px);
 }
 
-/* Mobile-specific improvements */
 @media (max-width: 479px) {
   .search-input {
-    font-size: 16px; /* Prevents zoom on iOS */
+    font-size: 16px;
     padding: 12px 14px;
   }
 
@@ -386,7 +368,6 @@ article.blog-post {
   }
 }
 
-/* Large desktop improvements */
 @media (min-width: 1536px) {
   .search-input {
     font-size: 19px;
@@ -405,7 +386,6 @@ article.blog-post {
   }
 }
 
-/* Ensure blog post container has proper background but inner elements are clean */
 .main-content .blog-post {
   background: #ffffff !important;
   border-radius: 12px !important;
@@ -413,7 +393,6 @@ article.blog-post {
   border: 1px solid rgba(0, 0, 0, 0.05) !important;
 }
 
-/* Clean inner elements but keep main container background */
 .blog-post > div,
 .blog-post > section {
   background: transparent !important;
@@ -421,13 +400,11 @@ article.blog-post {
   border: none !important;
 }
 
-/* Override nested white backgrounds but keep main container */
 .blog-post .bg-white:not(.blog-post),
 .blog-post [class*="bg-white"]:not(.blog-post) {
   background: transparent !important;
 }
 
-/* Remove nested shadows but keep main container shadow */
 .blog-post .shadow:not(.blog-post),
 .blog-post .shadow-sm:not(.blog-post),
 .blog-post .shadow-md:not(.blog-post),
@@ -435,9 +412,6 @@ article.blog-post {
   box-shadow: none !important;
 }
 
-/* Enhanced Dark Theme with Better Colors */
-
-/* Dark theme body and container with modern gradient */
 .theme-black {
   background: linear-gradient(
     135deg,
@@ -534,7 +508,6 @@ article.blog-post {
   border-radius: 0;
 }
 
-/* Dark theme blog posts with enhanced glass effect */
 .theme-black .blog-post {
   background: rgba(45, 55, 72, 0.85) !important;
   border: 1px solid rgba(99, 179, 237, 0.15) !important;
@@ -560,7 +533,6 @@ article.blog-post {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Dark theme text colors */
 .theme-black h1,
 .theme-black h2,
 .theme-black h3,
@@ -614,7 +586,6 @@ article.blog-post {
   color: #64748b !important;
 }
 
-/* Dark theme search bar */
 .theme-black .search-input {
   background: rgba(51, 65, 85, 0.8) !important;
   border: 2px solid rgba(71, 85, 105, 0.5) !important;
@@ -642,14 +613,12 @@ article.blog-post {
   left: 100%;
 }
 
-/* Dark theme header */
 .theme-black #main-header {
   background: rgba(15, 23, 42, 0.9) !important;
   border-bottom: 1px solid rgba(71, 85, 105, 0.3) !important;
   backdrop-filter: blur(12px);
 }
 
-/* Dark theme sidebar */
 .theme-black .sidebar {
   color: #e2e8f0 !important;
 }
@@ -690,7 +659,6 @@ article.blog-post {
   }
 }
 
-/* Dark theme footer */
 .theme-black footer {
   background: rgba(15, 23, 42, 0.9) !important;
   border-top: 1px solid rgba(71, 85, 105, 0.3) !important;
@@ -723,7 +691,6 @@ article.blog-post {
   color: #e2e8f0 !important;
 }
 
-/* Dark theme buttons and interactive elements */
 .theme-black button {
   color: #e2e8f0 !important;
 }
@@ -732,7 +699,6 @@ article.blog-post {
   color: #f1f5f9 !important;
 }
 
-/* Dark theme pagination */
 .theme-black .pagination-button {
   background: rgba(51, 65, 85, 0.8) !important;
   border: 1px solid rgba(71, 85, 105, 0.3) !important;
@@ -750,7 +716,6 @@ article.blog-post {
   color: #ffffff !important;
 }
 
-/* Dark theme filter bar */
 .theme-black .filter-button {
   background: rgba(51, 65, 85, 0.6) !important;
   border: 1px solid rgba(71, 85, 105, 0.3) !important;
@@ -768,7 +733,6 @@ article.blog-post {
   color: #ffffff !important;
 }
 
-/* Dark theme tags */
 .theme-black .tag {
   background: rgba(59, 130, 246, 0.2) !important;
   color: #93c5fd !important;
@@ -780,7 +744,6 @@ article.blog-post {
   color: #dbeafe !important;
 }
 
-/* Dark theme scrollbar */
 .theme-black ::-webkit-scrollbar {
   width: 8px;
 }
@@ -798,19 +761,16 @@ article.blog-post {
   background: rgba(100, 116, 139, 0.9);
 }
 
-/* Dark theme selection */
 .theme-black ::selection {
   background: rgba(59, 130, 246, 0.3);
   color: #f1f5f9;
 }
 
-/* Dark theme borders and dividers */
 .theme-black .border-gray-200,
 .theme-black .border-t {
   border-color: rgba(71, 85, 105, 0.3) !important;
 }
 
-/* Dark theme background overrides */
 .theme-black .bg-gray-50 {
   background: transparent !important;
 }
@@ -819,20 +779,17 @@ article.blog-post {
   background: rgba(30, 41, 59, 0.8) !important;
 }
 
-/* Dark theme hover effects */
 .theme-black .blog-post:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
   border-color: rgba(71, 85, 105, 0.5) !important;
 }
 
-/* Dark theme focus states */
 .theme-black *:focus {
   outline: 2px solid rgba(59, 130, 246, 0.5) !important;
   outline-offset: 2px;
 }
 
-/* Dark theme special elements */
 .theme-black .no-posts-found {
   background: rgba(30, 41, 59, 0.6) !important;
   border: 1px solid rgba(71, 85, 105, 0.3) !important;
@@ -847,14 +804,10 @@ article.blog-post {
   color: #64748b !important;
 }
 
-/* Enhanced Theme Transitions */
-
-/* Global smooth transitions for all elements */
 * {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-/* Specific transitions for different properties */
 .blog-container,
 .blog-post,
 .search-input,
@@ -868,12 +821,10 @@ footer,
     transform 0.3s ease-out, opacity 0.3s ease-out !important;
 }
 
-/* Theme transition wrapper */
 .theme-transition {
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Enhanced dark theme animations with staggered effects */
 .theme-black * {
   animation: fadeInDark 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
@@ -889,7 +840,6 @@ footer,
   }
 }
 
-/* Staggered animation delays for different elements */
 .theme-black .blog-post:nth-child(1) {
   animation-delay: 0.1s;
 }
@@ -906,7 +856,6 @@ footer,
   animation-delay: 0.5s;
 }
 
-/* Dark theme glass effect for cards */
 .theme-black .glass-effect {
   background: rgba(30, 41, 59, 0.7) !important;
   border: 1px solid rgba(71, 85, 105, 0.2) !important;
@@ -914,16 +863,12 @@ footer,
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Advanced Theme Transition System */
-
-/* Root element transition setup */
 :root {
   --transition-duration: 0.8s;
   --transition-timing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --bounce-timing: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* Main container theme transition with morphing effect */
 .blog-container {
   position: relative;
   overflow: hidden;
@@ -931,7 +876,6 @@ footer,
     color 0.6s var(--transition-timing) !important;
 }
 
-/* Create smooth morphing effect between themes */
 .blog-container::after {
   content: "";
   position: fixed;
@@ -949,7 +893,6 @@ footer,
     background 0.4s ease-out;
 }
 
-/* Dark theme morphing animation */
 .theme-black .blog-container::after {
   background: radial-gradient(
     circle,
@@ -962,7 +905,6 @@ footer,
   border-radius: 0;
 }
 
-/* Blog post advanced transitions */
 .blog-post {
   transform-origin: center;
   transition: background 0.7s var(--transition-timing),
@@ -970,7 +912,6 @@ footer,
     transform 0.4s var(--bounce-timing), opacity 0.3s ease-out !important;
 }
 
-/* Blog post theme switch animation */
 .theme-black .blog-post {
   animation: morphToDark 0.8s var(--transition-timing) forwards;
 }
@@ -995,7 +936,6 @@ footer,
   }
 }
 
-/* Light theme return animation */
 .theme-white .blog-post {
   animation: morphToLight 0.8s var(--transition-timing) forwards;
 }
@@ -1020,7 +960,6 @@ footer,
   }
 }
 
-/* Search bar advanced transition */
 .search-input {
   transition: background 0.6s var(--transition-timing),
     border-color 0.5s ease-out, color 0.4s ease-out,
@@ -1028,7 +967,6 @@ footer,
     transform 0.3s var(--bounce-timing) !important;
 }
 
-/* Search bar theme transition with glow effect */
 .theme-black .search-input {
   animation: searchToDark 0.7s var(--transition-timing) forwards;
 }
@@ -1053,13 +991,11 @@ footer,
   }
 }
 
-/* Header smooth transition */
 #main-header {
   transition: background 0.7s var(--transition-timing),
     border-color 0.5s ease-out, backdrop-filter 0.6s ease-out !important;
 }
 
-/* Sidebar enhanced transition */
 .sidebar {
   transition: color 0.5s ease-out, transform 0.6s var(--bounce-timing) !important;
 }
@@ -1070,7 +1006,6 @@ footer,
     transform 0.4s var(--bounce-timing) !important;
 }
 
-/* Sidebar theme switch animation */
 .theme-black .sidebar > div {
   animation: sidebarToDark 0.9s var(--transition-timing) forwards;
 }
@@ -1093,13 +1028,11 @@ footer,
   }
 }
 
-/* Footer transition */
 footer {
   transition: background 0.8s var(--transition-timing),
     border-color 0.5s ease-out !important;
 }
 
-/* Text color transitions with wave effect */
 h1,
 h2,
 h3,
@@ -1116,7 +1049,6 @@ a {
   transition: color 0.4s ease-out !important;
 }
 
-/* Button transitions */
 button {
   transition: background 0.3s var(--bounce-timing), color 0.3s ease-out,
     transform 0.2s ease-out !important;
@@ -1126,24 +1058,20 @@ button:hover {
   transform: translateY(-1px) scale(1.02);
 }
 
-/* Pagination smooth transitions */
 .pagination-button {
   transition: background 0.4s var(--bounce-timing), border-color 0.3s ease-out,
     color 0.3s ease-out, transform 0.2s ease-out !important;
 }
 
-/* Tag transitions */
 .tag {
   transition: background 0.4s var(--bounce-timing), color 0.3s ease-out,
     border-color 0.3s ease-out, transform 0.2s ease-out !important;
 }
 
-/* Scroll transitions */
 html {
   scroll-behavior: smooth;
 }
 
-/* Loading state for theme transitions */
 .theme-transitioning {
   pointer-events: none;
 }
@@ -1152,7 +1080,6 @@ html {
   transition-duration: 0.8s !important;
 }
 
-/* Theme switch ripple effect */
 .theme-switch-ripple {
   position: fixed;
   top: 50%;
@@ -1185,12 +1112,10 @@ html {
   }
 }
 
-/* Enhanced focus states with smooth transitions */
 *:focus {
   transition: outline 0.2s ease-out, outline-offset 0.2s ease-out !important;
 }
 
-/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   * {
     transition-duration: 0.1s !important;
@@ -1203,9 +1128,6 @@ html {
   }
 }
 
-/* Advanced Color Morphing System */
-
-/* Smooth color wave transition for dark theme */
 .theme-black {
   animation: colorWaveToDark 1.2s var(--transition-timing) forwards;
 }
@@ -1230,7 +1152,6 @@ html {
   }
 }
 
-/* Smooth color wave transition back to light theme */
 .theme-white {
   animation: colorWaveToLight 1.2s var(--transition-timing) forwards;
 }
@@ -1255,7 +1176,6 @@ html {
   }
 }
 
-/* Enhanced blog post color morphing */
 .blog-post {
   position: relative;
   overflow: hidden;
@@ -1283,7 +1203,6 @@ html {
   left: 100%;
 }
 
-/* Text color wave transitions */
 .theme-black h1,
 .theme-black h2,
 .theme-black h3 {
@@ -1320,7 +1239,6 @@ html {
   }
 }
 
-/* Search bar fluid morphing */
 .search-input {
   position: relative;
   overflow: hidden;
@@ -1350,7 +1268,6 @@ html {
   left: 100%;
 }
 
-/* Sidebar cascade effect */
 .sidebar > * {
   animation-fill-mode: forwards;
 }
@@ -1381,7 +1298,6 @@ html {
   }
 }
 
-/* Footer slide-up animation */
 .theme-black footer {
   animation: footerToDark 1s ease-out 0.5s forwards;
 }
@@ -1397,7 +1313,6 @@ html {
   }
 }
 
-/* Enhanced particle effect for theme switch */
 .theme-switch-particles {
   position: fixed;
   top: 0;
@@ -1443,7 +1358,6 @@ html {
   }
 }
 
-/* Loading overlay for smooth transitions */
 .theme-loading-overlay {
   position: fixed;
   top: 0;
@@ -1467,7 +1381,6 @@ html {
   opacity: 1;
 }
 
-/* Enhanced morphing for individual elements */
 .morphing-element {
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform-style: preserve-3d;
@@ -1489,7 +1402,6 @@ html {
   }
 }
 
-/* Smooth backdrop filter transition */
 .backdrop-transition {
   transition: backdrop-filter 0.8s ease-out;
 }
@@ -1498,7 +1410,6 @@ html {
   backdrop-filter: blur(20px) saturate(180%) hue-rotate(10deg);
 }
 
-/* Enhanced glow effects during transition */
 .glow-transition {
   position: relative;
 }

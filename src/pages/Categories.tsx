@@ -105,19 +105,19 @@ const Categories: React.FC<CategoriesProps> = ({ onNavigate }) => {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         <div className="text-center p-6 bg-white rounded-xl shadow-sm border border-gray-200">
-          <div className="text-3xl font-bold text-blue-600 mb-2">39+</div>
+          <div className="text-3xl font-bold text-black-600 mb-2">39+</div>
           <div className="text-gray-600 text-sm">Total Articles</div>
         </div>
         <div className="text-center p-6 bg-white rounded-xl shadow-sm border border-gray-200">
-          <div className="text-3xl font-bold text-green-600 mb-2">6</div>
+          <div className="text-3xl font-bold text-black-600 mb-2">6</div>
           <div className="text-gray-600 text-sm">Categories</div>
         </div>
         <div className="text-center p-6 bg-white rounded-xl shadow-sm border border-gray-200">
-          <div className="text-3xl font-bold text-purple-600 mb-2">20+</div>
+          <div className="text-3xl font-bold text-black-600 mb-2">20+</div>
           <div className="text-gray-600 text-sm">Topics Covered</div>
         </div>
         <div className="text-center p-6 bg-white rounded-xl shadow-sm border border-gray-200">
-          <div className="text-3xl font-bold text-orange-600 mb-2">Weekly</div>
+          <div className="text-3xl font-bold text-black-600 mb-2">Weekly</div>
           <div className="text-gray-600 text-sm">New Content</div>
         </div>
       </div>

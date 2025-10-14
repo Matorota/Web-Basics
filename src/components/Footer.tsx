@@ -132,7 +132,7 @@ const Footer: React.FC<{ onNavigate?: (page: string) => void }> = ({
               </li>
               <li>
                 <a
-                  href="#"
+                  onClick={(e) => handleNavClick("archive", e)}
                   className="hover:text-gray-900 transition-colors duration-200"
                 >
                   Archive
@@ -156,7 +156,7 @@ const Footer: React.FC<{ onNavigate?: (page: string) => void }> = ({
               </li>
               <li>
                 <a
-                  href="#"
+                  onClick={(e) => handleNavClick("privacy", e)}
                   className="hover:text-gray-900 transition-colors duration-200"
                 >
                   Privacy Policy
@@ -164,7 +164,7 @@ const Footer: React.FC<{ onNavigate?: (page: string) => void }> = ({
               </li>
               <li>
                 <a
-                  href="#"
+                  onClick={(e) => handleNavClick("privacy", e)}
                   className="hover:text-gray-900 transition-colors duration-200"
                 >
                   Terms of Service

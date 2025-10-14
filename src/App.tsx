@@ -39,16 +39,13 @@ const useThemeTransition = (initialTheme = "white") => {
         }, 1000);
       }
 
-      // Add transitioning class
       document.body.classList.add("theme-transitioning");
 
-      // Change theme after a short delay
       setTimeout(() => {
         setTheme(newTheme);
         document.body.className = `theme-${newTheme}`;
       }, 100);
 
-      // Remove transitioning class after animation completes
       setTimeout(() => {
         document.body.classList.remove("theme-transitioning");
         setIsTransitioning(false);
