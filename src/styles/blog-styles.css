@@ -400,9 +400,6 @@ article > div {
   color: var(--text-secondary) !important;
 }
 
-/* Enhanced Image Layouts and Positioning */
-
-/* Hero Image Containers */
 .hero-image-container {
   position: relative;
   overflow: hidden;
@@ -412,7 +409,6 @@ article > div {
   background-size: cover;
 }
 
-/* Floating Elements with Proper Z-Index */
 .floating-element {
   position: absolute;
   pointer-events: none;
@@ -430,7 +426,6 @@ article > div {
   opacity: 0.8;
 }
 
-/* Image Grid Layouts */
 .image-grid {
   display: grid;
   gap: 1rem;
@@ -449,7 +444,6 @@ article > div {
   grid-template-columns: repeat(4, 1fr);
 }
 
-/* Responsive Image Grid */
 @media (max-width: 768px) {
   .image-grid-3,
   .image-grid-4 {
@@ -465,7 +459,6 @@ article > div {
   }
 }
 
-/* Image Overlay Effects */
 .image-overlay {
   position: absolute;
   top: 0;
@@ -486,7 +479,6 @@ article > div {
   opacity: 1;
 }
 
-/* Stacked Z-Index Management */
 .z-base {
   z-index: 1;
 }
@@ -515,7 +507,6 @@ article > div {
   z-index: 80;
 }
 
-/* Animated Image Elements */
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
@@ -534,7 +525,6 @@ article > div {
   }
 }
 
-/* Image Aspect Ratios */
 .aspect-square {
   aspect-ratio: 1 / 1;
 }
@@ -548,7 +538,6 @@ article > div {
   aspect-ratio: 3 / 4;
 }
 
-/* Background Pattern Utilities */
 .bg-pattern-dots {
   background-image: radial-gradient(
     circle,
