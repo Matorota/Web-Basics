@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
 interface FormErrors {
   name?: string;
   email?: string;
@@ -8,7 +15,7 @@ interface FormErrors {
 }
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     subject: "",
@@ -18,205 +25,283 @@ const Contact: React.FC = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Regex patterns for validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const nameRegex = /^[a-zA-ZāčēģīķļņšūžĀČĒĢĪĶĻŅŠŪŽ\s]{2,50}$/;
-  const subjectRegex = /^.{3,100}$/;
-  const messageRegex = /^.{10,500}$/;
+  const emailRegex =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  const nameRegex = /^[a-zA-ZÀ-ÿĀ-žА-я\s'-]{2,50}$/;
+  const subjectRegex = /^[a-zA-ZÀ-ÿĀ-žА-я0-9\s.,!?'-]{3,100}$/;
+  const messageRegex = /^[\s\S]{10,500}$/;
 
-  const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
-
-    if (!nameRegex.test(formData.name)) {
-      newErrors.name = "Name must be 2-50 characters, letters only";
+  const validateField = (name: string, value: string): string => {
+    switch (name) {
+      case "name":
+        if (!value.trim()) return "Name is required";
+        if (!nameRegex.test(value.trim()))
+          return "Name must be 2-50 characters with only letters, spaces, apostrophes, and hyphens";
+        return "";
+      case "email":
+        if (!value.trim()) return "Email is required";
+        if (!emailRegex.test(value.trim()))
+          return "Please enter a valid email address";
+        return "";
+      case "subject":
+        if (!value.trim()) return "Subject is required";
+        if (!subjectRegex.test(value.trim()))
+          return "Subject must be 3-100 characters with letters, numbers, and basic punctuation";
+        return "";
+      case "message":
+        if (!value.trim()) return "Message is required";
+        if (!messageRegex.test(value.trim()))
+          return "Message must be between 10-500 characters";
+        return "";
+      default:
+        return "";
     }
-
-    if (!emailRegex.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
-    }
-
-    if (!subjectRegex.test(formData.subject)) {
-      newErrors.subject = "Subject must be 3-100 characters long";
-    }
-
-    if (!messageRegex.test(formData.message)) {
-      newErrors.message = "Message must be 10-500 characters long";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
   };
 
   const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData({ ...formData, [name]: value });
 
-    // Clear error when user starts typing
-    if (errors[name as keyof FormErrors]) {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: undefined,
-      }));
-    }
+    const error = validateField(name, value);
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: error,
+    }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const newErrors: FormErrors = {};
 
-    if (validateForm()) {
-      console.log("Form submitted:", formData);
+    Object.keys(formData).forEach((key) => {
+      const error = validateField(key, formData[key as keyof FormData]);
+      if (error) newErrors[key as keyof FormErrors] = error;
+    });
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
       setIsSubmitted(true);
-
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({ name: "", email: "", subject: "", message: "" });
-        setErrors({});
-      }, 3000);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setIsSubmitted(false), 5000);
     }
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          Get in Touch
-        </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Have a question, suggestion, or just want to say hello? We'd love to
-          hear from you. Reach out and we'll get back to you as soon as
-          possible.
-        </p>
-      </div>
-
+    <div className="min-h-screen bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Send us a Message
-          </h2>
+        <div className="bg-white rounded-xl shadow-lg p-8">
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              Get in Touch
+            </h1>
+            <p className="text-lg text-gray-600">
+              We'd love to hear from you. Send us a message and we'll respond as
+              soon as possible.
+            </p>
+          </div>
 
-          {isSubmitted ? (
-            <div className="text-center py-12">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Message Sent!
-              </h3>
-              <p className="text-gray-600">
-                Thank you for reaching out. We'll get back to you soon.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+          {isSubmitted && (
+            <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+              <div className="flex items-center">
+                <div className="flex-shrink-0">
+                  <svg
+                    className="h-5 w-5 text-green-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 ${
-                      errors.name ? "border-red-500" : "border-gray-300"
-                    }`}
-                    placeholder="Your full name"
-                  />
-                  {errors.name && (
-                    <p className="mt-1 text-sm text-red-600">{errors.name}</p>
-                  )}
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
                 </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 ${
-                      errors.email ? "border-red-500" : "border-gray-300"
-                    }`}
-                    placeholder="your.email@example.com"
-                  />
-                  {errors.email && (
-                    <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-                  )}
+                <div className="ml-3">
+                  <p className="text-sm font-medium text-green-800">
+                    Message sent successfully! We'll get back to you soon.
+                  </p>
                 </div>
               </div>
+            </div>
+          )}
 
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  htmlFor="name"
+                  className="block text-sm font-semibold text-gray-900 mb-2"
                 >
-                  Subject *
+                  Your Name *
                 </label>
                 <input
                   type="text"
-                  id="subject"
-                  name="subject"
-                  required
-                  value={formData.subject}
+                  id="name"
+                  name="name"
+                  value={formData.name}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 ${
-                    errors.subject ? "border-red-500" : "border-gray-300"
+                  className={`block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-all duration-200 ${
+                    errors.name
+                      ? "border-red-300 focus:ring-red-500 focus:border-red-500 bg-red-50"
+                      : "border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                   }`}
-                  placeholder="What's this about?"
+                  placeholder="John Doe"
                 />
-                {errors.subject && (
-                  <p className="mt-1 text-sm text-red-600">{errors.subject}</p>
+                {errors.name && (
+                  <p className="mt-2 text-sm text-red-600 flex items-center">
+                    <svg
+                      className="h-4 w-4 mr-1 flex-shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    {errors.name}
+                  </p>
                 )}
               </div>
 
               <div>
                 <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  htmlFor="email"
+                  className="block text-sm font-semibold text-gray-900 mb-2"
                 >
-                  Message *
+                  Email Address *
                 </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={6}
-                  required
-                  value={formData.message}
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 resize-none ${
-                    errors.message ? "border-red-500" : "border-gray-300"
+                  className={`block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-all duration-200 ${
+                    errors.email
+                      ? "border-red-300 focus:ring-red-500 focus:border-red-500 bg-red-50"
+                      : "border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                   }`}
-                  placeholder="Tell us more about your inquiry..."
+                  placeholder="john@example.com"
                 />
-                {errors.message && (
-                  <p className="mt-1 text-sm text-red-600">{errors.message}</p>
+                {errors.email && (
+                  <p className="mt-2 text-sm text-red-600 flex items-center">
+                    <svg
+                      className="h-4 w-4 mr-1 flex-shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    {errors.email}
+                  </p>
                 )}
               </div>
+            </div>
 
+            <div>
+              <label
+                htmlFor="subject"
+                className="block text-sm font-semibold text-gray-900 mb-2"
+              >
+                Subject *
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleInputChange}
+                className={`block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 transition-all duration-200 ${
+                  errors.subject
+                    ? "border-red-300 focus:ring-red-500 focus:border-red-500 bg-red-50"
+                    : "border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                }`}
+                placeholder="How can we help you?"
+              />
+              {errors.subject && (
+                <p className="mt-2 text-sm text-red-600 flex items-center">
+                  <svg
+                    className="h-4 w-4 mr-1 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  {errors.subject}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-sm font-semibold text-gray-900 mb-2"
+              >
+                Message *
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={6}
+                value={formData.message}
+                onChange={handleInputChange}
+                className={`block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 resize-vertical transition-all duration-200 ${
+                  errors.message
+                    ? "border-red-300 focus:ring-red-500 focus:border-red-500 bg-red-50"
+                    : "border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                }`}
+                placeholder="Tell us more about your inquiry..."
+              />
+              {errors.message && (
+                <p className="mt-2 text-sm text-red-600 flex items-center">
+                  <svg
+                    className="h-4 w-4 mr-1 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  {errors.message}
+                </p>
+              )}
+            </div>
+
+            <div className="pt-4">
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 flex items-center justify-center gap-2"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-md transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               >
                 Send Message
               </button>
-            </form>
-          )}
+            </div>
+          </form>
         </div>
       </div>
     </div>

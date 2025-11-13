@@ -14,6 +14,7 @@ import Archive from "./pages/Archive";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import { SAMPLE_BLOG_POSTS } from "./constants";
+import { useAppContext } from "./context/AppContext";
 import "./styles/blog-styles.css";
 import "./styles/responsive-clean.css";
 import "./styles/simple-theme-clean.css";
@@ -58,6 +59,7 @@ const useThemeTransition = (initialTheme = "white") => {
 };
 
 function App() {
+  const { isPreviewOpen } = useAppContext();
   const [currentPage, setCurrentPage] = useState("home");
   const [selectedPostId, setSelectedPostId] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -260,9 +262,11 @@ function App() {
         themeClasses[theme as keyof typeof themeClasses]
       }`}
     >
-      <div id="main-header" className="sticky top-0 z-50 bg-inherit">
-        <Header currentPage={currentPage} onNavigate={handleNavigation} />
-      </div>
+      {!isPreviewOpen && (
+        <div id="main-header" className="sticky top-0 z-50 bg-inherit">
+          <Header currentPage={currentPage} onNavigate={handleNavigation} />
+        </div>
+      )}
 
       <main
         id="main-content"
