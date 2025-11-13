@@ -12,13 +12,12 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Simple Header */}
-      <div className="text-center mb-12">
+    <div className="w-full px-2 py-8">
+      <div className="text-center mb-10">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           About MyBlog
         </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
           We're passionate about sharing knowledge and helping developers grow
           through high-quality content, tutorials, and insights.
         </p>

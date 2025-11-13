@@ -270,9 +270,9 @@ function App() {
 
       <main
         id="main-content"
-        className="blog-layout max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
+        className="blog-layout w-full px-2 sm:px-3 lg:px-4 xl:px-6 py-6"
       >
-        <div className="blog-grid grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-6 lg:gap-8">
+        <div className="blog-grid grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-4 md:gap-5 lg:gap-6 xl:gap-8 max-w-full">
           <div className="main-content md:col-span-8 lg:col-span-8 xl:col-span-9">
             {renderMainContent()}
           </div>

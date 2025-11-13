@@ -76,17 +76,17 @@ const Categories: React.FC<CategoriesProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="text-center mb-12">
+    <div className="w-full px-2 py-8">
+      <div className="text-center mb-10">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           Browse by Category
         </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
           Explore our collection of articles organized by topics.
         </p>
       </div>
 
-      <div className="space-y-4 mb-12">
+      <div className="space-y-4 mb-10">
         {categories.map((category, index) => (
           <div
             key={index}
@@ -129,26 +129,6 @@ const Categories: React.FC<CategoriesProps> = ({ onNavigate }) => {
             </div>
           </div>
         ))}
-      </div>
-
-      {/* Simple stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <div className="text-2xl font-bold text-blue-600 mb-1">39+</div>
-          <div className="text-gray-600 text-sm">Total Articles</div>
-        </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <div className="text-2xl font-bold text-green-600 mb-1">6</div>
-          <div className="text-gray-600 text-sm">Categories</div>
-        </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <div className="text-2xl font-bold text-purple-600 mb-1">20+</div>
-          <div className="text-gray-600 text-sm">Topics</div>
-        </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <div className="text-2xl font-bold text-orange-600 mb-1">Weekly</div>
-          <div className="text-gray-600 text-sm">Updates</div>
-        </div>
       </div>
     </div>
   );

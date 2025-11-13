@@ -22,7 +22,7 @@ const Archive: React.FC<ArchiveProps> = ({ onPostClick }) => {
   }, {} as { [key: string]: typeof SAMPLE_BLOG_POSTS });
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 text-center">
+    <div className="w-full px-2 py-6 text-center">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Archive</h1>
       </div>

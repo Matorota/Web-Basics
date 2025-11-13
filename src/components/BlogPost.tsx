@@ -112,21 +112,22 @@ const BlogSummaryButton: React.FC<{ post: BlogPostProps }> = ({ post }) => {
 
       {showSummary && (
         <div
-          className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-gradient-to-br from-gray-900/85 via-slate-800/90 to-gray-900/85 backdrop-blur-md flex items-center justify-center z-50 p-4"
           onClick={handleClosePreview}
         >
           <div
-            className="bg-white/95 backdrop-blur-sm rounded-xl max-w-lg w-full shadow-2xl max-h-[90vh] overflow-hidden border border-gray-300/50"
+            className="bg-white rounded-xl max-w-lg w-full shadow-2xl max-h-[90vh] overflow-hidden border border-gray-300 ring-1 ring-gray-200/50"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="bg-gradient-to-r from-blue-700 to-blue-800 text-white p-6 shadow-lg">
-              <div className="flex items-center justify-between">
-                <h2 className="text-xl font-bold pr-4 leading-tight drop-shadow-sm">
+            <div className="bg-gradient-to-r from-slate-700 to-gray-800 text-white p-6 relative">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/10"></div>
+              <div className="relative flex items-center justify-between">
+                <h2 className="text-xl font-semibold pr-4 leading-tight">
                   {post.title}
                 </h2>
                 <button
                   onClick={handleClosePreview}
-                  className="text-blue-100 hover:text-white transition-colors p-2 hover:bg-blue-800/50 rounded-lg backdrop-blur-sm"
+                  className="text-gray-300 hover:text-white transition-colors p-2 hover:bg-black/20 rounded-lg"
                 >
                   <svg
                     className="w-6 h-6"
@@ -145,15 +146,15 @@ const BlogSummaryButton: React.FC<{ post: BlogPostProps }> = ({ post }) => {
               </div>
             </div>
 
-            <div className="p-6 overflow-y-auto max-h-[calc(90vh-100px)] bg-white/95">
-              <div className="mb-6 bg-gray-50/80 p-4 rounded-lg">
+            <div className="p-6 overflow-y-auto max-h-[calc(90vh-100px)] bg-gradient-to-b from-gray-50/50 to-white">
+              <div className="mb-6 bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-gray-100 shadow-sm">
                 <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
-                  <span className="font-semibold">By {post.author}</span>
-                  <span className="font-medium">{post.date}</span>
+                  <span className="font-medium">By {post.author}</span>
+                  <span className="text-gray-500">{post.date}</span>
                 </div>
-                <div className="flex items-center text-sm text-gray-600 mb-4">
+                <div className="flex items-center text-sm text-gray-600">
                   <svg
-                    className="w-4 h-4 text-gray-500 mr-2"
+                    className="w-4 h-4 text-gray-400 mr-2"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -165,28 +166,26 @@ const BlogSummaryButton: React.FC<{ post: BlogPostProps }> = ({ post }) => {
                       d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  <span className="font-medium">{post.readTime} read</span>
+                  <span>{post.readTime} read</span>
                 </div>
               </div>
 
-              <div className="mb-6 bg-blue-50/80 p-4 rounded-lg">
-                <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-blue-200 pb-2">
+              <div className="mb-6 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
                   Article Overview
                 </h3>
-                <p className="text-gray-800 leading-relaxed font-medium">
-                  {post.excerpt}
-                </p>
+                <p className="text-gray-700 leading-relaxed">{post.excerpt}</p>
               </div>
 
-              <div className="mb-6 bg-green-50/80 p-4 rounded-lg">
-                <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-green-200 pb-2">
+              <div className="mb-6 bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
                   What You'll Learn
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-2">
                   {detailedSummary.map((point, index) => (
                     <p
                       key={index}
-                      className="text-gray-800 leading-relaxed flex items-start font-medium"
+                      className="text-gray-700 leading-relaxed text-sm"
                     >
                       {point}
                     </p>
@@ -194,15 +193,15 @@ const BlogSummaryButton: React.FC<{ post: BlogPostProps }> = ({ post }) => {
                 </div>
               </div>
 
-              <div className="mb-6 bg-purple-50/80 p-4 rounded-lg">
-                <h3 className="text-lg font-bold text-gray-900 mb-3 border-b-2 border-purple-200 pb-2">
+              <div className="mb-6 bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
                   Topics Covered
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-3 py-2 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 text-sm rounded-full border-2 border-blue-300 font-semibold shadow-sm"
+                      className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full border border-gray-200"
                     >
                       {tag}
                     </span>
@@ -210,8 +209,8 @@ const BlogSummaryButton: React.FC<{ post: BlogPostProps }> = ({ post }) => {
                 </div>
               </div>
 
-              <div className="bg-gray-100/90 p-5 rounded-lg border-2 border-gray-300 shadow-sm">
-                <p className="text-sm text-gray-700 text-center font-semibold">
+              <div className="bg-gray-100 p-4 rounded-lg border border-gray-200">
+                <p className="text-sm text-gray-600 text-center">
                   Ready to dive deeper? Close this preview to access the full
                   article content.
                 </p>
